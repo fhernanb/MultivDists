@@ -50,6 +50,24 @@ alpha <- -1.27
 probs <- dBP_Laksh(x=space, l1=l1, l2=l2, alpha=alpha)
 sum(probs)
 
+# Heatmap for a BP_Laksh
+
+l1 <- 1
+l2 <- 2
+correct_alpha_BP_Laksh(l1=l1, l2=l2)
+alpha <- -2.9
+
+X1 <- 0:10
+X2 <- 0:10
+data <- expand.grid(X1=X1, X2=X2)
+data$Prob <- dBP_Laksh(x=data, l1=l1, l2=l2, alpha=alpha)
+data$X1 <- factor(data$X1)
+data$X2 <- factor(data$X2)
+
+library(ggplot2)
+ggplot(data, aes(X1, X2, fill=Prob)) +
+  geom_tile() +
+  scale_fill_gradient(low="darkgreen", high="white")
 }
 \author{
 Freddy Hernandez-Barajas, \email{fhernanb@unal.edu.co}
