@@ -15,3 +15,8 @@ You can install the development version of MultivDists from [GitHub](https://git
 # install.packages("pak")
 pak::pak("fhernanb/MultivDists")
 ```
+
+You can visit the [package
+website](https://fhernanb.github.io/MultivDists/) to explore the vignettes
+(articles) and function reference.
+
