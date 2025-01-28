@@ -1,2 +1,4 @@
 ^MultivDists\.Rproj$
 ^\.Rproj\.user$
+^examples$
+^LICENSE\.md$
