@@ -4,7 +4,7 @@
 <!-- badges: start -->
 <!-- badges: end -->
 
-The goal of MultivDists is to ...
+The goal of MultivDists is to implement in R multivariate statistical distributions proposed in the literature.
 
 ## Installation
 
@@ -15,12 +15,4 @@ You can install the development version of MultivDists from [GitHub](https://git
 pak::pak("fhernanb/MultivDists")
 ```
 
-## Example
-
-This is a basic example which shows you how to solve a common problem:
-
-``` r
-library(MultivDists)
-## basic example code
-```
 
