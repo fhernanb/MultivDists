@@ -52,7 +52,9 @@ under the parameterization of Lakshminarayana et. al (1993).</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">dBP_Laksh</span><span class="op">(</span><span class="va">x</span>, <span class="va">l1</span>, <span class="va">l2</span>, <span class="va">alpha</span>, log <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">dBP_Laksh</span><span class="op">(</span><span class="va">x</span>, <span class="va">l1</span>, <span class="va">l2</span>, <span class="va">alpha</span>, log <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">rBP_Laksh</span><span class="op">(</span><span class="va">n</span>, <span class="va">l1</span>, <span class="va">l2</span>, <span class="va">alpha</span>, max_val_x1 <span class="op">=</span> <span class="cn">NULL</span>, max_val_x2 <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -79,10 +81,26 @@ each row is taken to be a quantile and columns correspond to the number of dimen
 <dt id="arg-log">log<a class="anchor" aria-label="anchor" href="#arg-log"></a></dt>
 <dd><p>logical; if <code>TRUE</code>, densities d are given as log(d).</p></dd>
 
+
+<dt id="arg-n">n<a class="anchor" aria-label="anchor" href="#arg-n"></a></dt>
+<dd><p>number of random observations.</p></dd>
+
+
+<dt id="arg-max-val-x-">max_val_x1<a class="anchor" aria-label="anchor" href="#arg-max-val-x-"></a></dt>
+<dd><p>maximum value for \(X_1\) that is expected, by default it is 100.</p></dd>
+
+
+<dt id="arg-max-val-x-">max_val_x2<a class="anchor" aria-label="anchor" href="#arg-max-val-x-"></a></dt>
+<dd><p>maximum value for \(X_2\) that is expected, by default it is 100.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
     <p>Returns the density for a given data <code>x</code>.</p>
+    </div>
+    <div id="references">
+    <h2>References</h2>
+    <p>Lakshminarayana, J., Pandit, S. N., &amp; Srinivasa Rao, K. (1999). On a bivariate Poisson distribution. Communications in Statistics-Theory and Methods, 28(2), 267-276.</p>
     </div>
     <div id="author">
     <h2>Author</h2>
@@ -111,7 +129,7 @@ each row is taken to be a quantile and columns correspond to the number of dimen
 <span class="r-in"><span><span class="fu">dBP_Laksh</span><span class="op">(</span>x<span class="op">=</span><span class="va">x</span>, l1<span class="op">=</span><span class="fl">3</span>, l2<span class="op">=</span><span class="fl">4</span>, alpha<span class="op">=</span><span class="fl">1</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0.001625049 0.003283848 0.004540631</span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co"># Checking if the probabilites sum 1</span></span></span>
+<span class="r-in"><span><span class="co"># Checking if the probabilities sum 1</span></span></span>
 <span class="r-in"><span><span class="va">val_x1</span> <span class="op">&lt;-</span> <span class="va">val_x2</span> <span class="op">&lt;-</span> <span class="fl">0</span><span class="op">:</span><span class="fl">50</span></span></span>
 <span class="r-in"><span><span class="va">space</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/expand.grid.html" class="external-link">expand.grid</a></span><span class="op">(</span><span class="va">val_x1</span>, <span class="va">val_x2</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">space</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">as.matrix</a></span><span class="op">(</span><span class="va">space</span><span class="op">)</span></span></span>
@@ -124,7 +142,7 @@ each row is taken to be a quantile and columns correspond to the number of dimen
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/sum.html" class="external-link">sum</a></span><span class="op">(</span><span class="va">probs</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] 1</span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co"># Heatmap for a BP_Laksh</span></span></span>
+<span class="r-in"><span><span class="co"># Heat map for a BP_Laksh</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">l1</span> <span class="op">&lt;-</span> <span class="fl">1</span></span></span>
 <span class="r-in"><span><span class="va">l2</span> <span class="op">&lt;-</span> <span class="fl">2</span></span></span>
@@ -149,6 +167,23 @@ each row is taken to be a quantile and columns correspond to the number of dimen
 <span class="r-in"><span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_tile.html" class="external-link">geom_tile</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span></span>
 <span class="r-in"><span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_gradient.html" class="external-link">scale_fill_gradient</a></span><span class="op">(</span>low<span class="op">=</span><span class="st">"darkgreen"</span>, high<span class="op">=</span><span class="st">"white"</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="dBP_Laksh-1.png" alt="" width="700" height="433"></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Generating random values and moment estimations</span></span></span>
+<span class="r-in"><span><span class="va">l1</span> <span class="op">&lt;-</span> <span class="fl">1</span></span></span>
+<span class="r-in"><span><span class="va">l2</span> <span class="op">&lt;-</span> <span class="fl">2</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="correct_alpha_BP_Laksh.html">correct_alpha_BP_Laksh</a></span><span class="op">(</span>l1<span class="op">=</span><span class="va">l1</span>, l2<span class="op">=</span><span class="va">l2</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $min_alpha</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] -2.97445</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $max_alpha</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 2.97445</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-in"><span><span class="va">alpha</span> <span class="op">&lt;-</span> <span class="op">-</span><span class="fl">2.7</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu">rBP_Laksh</span><span class="op">(</span>n<span class="op">=</span><span class="fl">500</span>, <span class="va">l1</span>, <span class="va">l2</span>, <span class="va">alpha</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="moments_estim_BP_Laksh.html">moments_estim_BP_Laksh</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    l1_hat    l2_hat alpha_hat </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    1.0540    1.9500   -2.5153 </span>
 </code></pre></div>
     </div>
   </div>

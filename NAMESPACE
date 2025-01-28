@@ -3,6 +3,7 @@
 export(aux_BP_Laksh)
 export(correct_alpha_BP_Laksh)
 export(dBP_Laksh)
+export(moments_estim_BP_Laksh)
 export(rBP_Laksh)
 importFrom(Rcpp,sourceCpp)
 importFrom(stats,runif)

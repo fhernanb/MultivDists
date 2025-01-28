@@ -12,7 +12,7 @@ correct_alpha_BP_Laksh(l1, l2)
 \item{l2}{mean for the marginal \eqn{X_2} variable with Poisson distribution.}
 }
 \value{
-Returns the density for a given data \code{x}.
+A interval with possible values for \eqn{\alpha}.
 }
 \description{
 This function obtains the interval in which the parameter \eqn{\alpha} must be.

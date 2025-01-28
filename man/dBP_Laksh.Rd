@@ -47,7 +47,7 @@ x <- matrix(c(0, 0,
 x
 dBP_Laksh(x=x, l1=3, l2=4, alpha=1)
 
-# Checking if the probabilites sum 1
+# Checking if the probabilities sum 1
 val_x1 <- val_x2 <- 0:50
 space <- expand.grid(val_x1, val_x2)
 space <- as.matrix(space)
@@ -59,7 +59,7 @@ alpha <- -1.27
 probs <- dBP_Laksh(x=space, l1=l1, l2=l2, alpha=alpha)
 sum(probs)
 
-# Heatmap for a BP_Laksh
+# Heat map for a BP_Laksh
 
 l1 <- 1
 l2 <- 2
@@ -77,6 +77,15 @@ library(ggplot2)
 ggplot(data, aes(X1, X2, fill=Prob)) +
   geom_tile() +
   scale_fill_gradient(low="darkgreen", high="white")
+
+# Generating random values and moment estimations
+l1 <- 1
+l2 <- 2
+correct_alpha_BP_Laksh(l1=l1, l2=l2)
+alpha <- -2.7
+
+x <- rBP_Laksh(n=500, l1, l2, alpha)
+moments_estim_BP_Laksh(x)
 }
 \references{
 Lakshminarayana, J., Pandit, S. N., & Srinivasa Rao, K. (1999). On a bivariate Poisson distribution. Communications in Statistics-Theory and Methods, 28(2), 267-276.
