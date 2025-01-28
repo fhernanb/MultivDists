@@ -2,9 +2,12 @@
 % Please edit documentation in R/dBP_Laksh.R
 \name{dBP_Laksh}
 \alias{dBP_Laksh}
+\alias{rBP_Laksh}
 \title{Bivariate Poisson Distribution - Laksh}
 \usage{
 dBP_Laksh(x, l1, l2, alpha, log = FALSE)
+
+rBP_Laksh(n, l1, l2, alpha, max_val_x1 = NULL, max_val_x2 = NULL)
 }
 \arguments{
 \item{x}{vector or matrix of quantiles. When \code{x} is a matrix,
@@ -17,6 +20,12 @@ each row is taken to be a quantile and columns correspond to the number of dimen
 \item{alpha}{third parameter.}
 
 \item{log}{logical; if \code{TRUE}, densities d are given as log(d).}
+
+\item{n}{number of random observations.}
+
+\item{max_val_x1}{maximum value for \eqn{X_1} that is expected, by default it is 100.}
+
+\item{max_val_x2}{maximum value for \eqn{X_2} that is expected, by default it is 100.}
 }
 \value{
 Returns the density for a given data \code{x}.
@@ -68,6 +77,9 @@ library(ggplot2)
 ggplot(data, aes(X1, X2, fill=Prob)) +
   geom_tile() +
   scale_fill_gradient(low="darkgreen", high="white")
+}
+\references{
+Lakshminarayana, J., Pandit, S. N., & Srinivasa Rao, K. (1999). On a bivariate Poisson distribution. Communications in Statistics-Theory and Methods, 28(2), 267-276.
 }
 \author{
 Freddy Hernandez-Barajas, \email{fhernanb@unal.edu.co}

@@ -3,3 +3,5 @@
 ^examples$
 ^LICENSE\.md$
 ^\.github$
+^docs$
+^\.github$

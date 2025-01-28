@@ -8,13 +8,19 @@
 #'
 #' @param x vector or matrix of quantiles. When \code{x} is a matrix,
 #' each row is taken to be a quantile and columns correspond to the number of dimensions \code{p}.
+#' @param n number of random observations.
 #' @param l1 mean for the marginal \eqn{X_1} variable with Poisson distribution.
 #' @param l2 mean for the marginal \eqn{X_2} variable with Poisson distribution.
 #' @param alpha third parameter.
+#' @param max_val_x1 maximum value for \eqn{X_1} that is expected, by default it is 100.
+#' @param max_val_x2 maximum value for \eqn{X_2} that is expected, by default it is 100.
 #' @param log logical; if \code{TRUE}, densities d are given as log(d).
 #'
 #' @returns
 #' Returns the density for a given data \code{x}.
+#'
+#' @references
+#' Lakshminarayana, J., Pandit, S. N., & Srinivasa Rao, K. (1999). On a bivariate Poisson distribution. Communications in Statistics-Theory and Methods, 28(2), 267-276.
 #'
 #' @example examples/examples_dBP_Laksh.R
 #'
@@ -69,4 +75,54 @@ correct_alpha_BP_Laksh <- function(l1, l2) {
   max_alpha <-  1 / ((1-A)*(1-B))
   min_alpha <- -1 / ((1-A)*(1-B))
   return(list(min_alpha=min_alpha, max_alpha=max_alpha))
+}
+#'
+#'
+#'
+#'
+llBP_Laksh <- function(param, x) {
+  l1    <- param[1]  # param es el vector de parametros
+  l2    <- param[2]
+  alpha <- param[3]
+  sum(dBP_Laksh(x=x, l1=l1, l2=l2, alpha=alpha, log=TRUE))
+}
+#'
+#'
+#'
+#' @rdname dBP_Laksh
+#' @importFrom stats runif
+#' @export
+#' @useDynLib MultivDists
+#' @importFrom Rcpp sourceCpp
+rBP_Laksh <- function(n, l1, l2, alpha,
+                      max_val_x1=NULL, max_val_x2=NULL) {
+
+  if(is.null(max_val_x1)) max_val_x1 <- 100
+  if(is.null(max_val_x2)) max_val_x2 <- 100
+
+  val_x1 <- 0:max_val_x1
+  val_x2 <- 0:max_val_x2
+  grid_x <- expand.grid(val_x1, val_x2)
+  grid_x <- as.matrix(grid_x)
+  probs <- dBP_Laksh(x=grid_x, l1=l1, l2=l2, alpha=alpha)
+  distri <- data.frame(grid_x, probs)
+  distri <- distri[order(-distri$probs), ] # Organizando
+  distri$cumul_probs <- cumsum(distri$probs)
+
+  # Function to extract positions in a probability table
+  pseudo_r_BP_Laksh <- function(u, cumul_probs) {
+    position <- NULL
+    for (i in 1:length(u)) {
+      position[i] <- which(u[i] <= cumul_probs)[1]
+    }
+    return(position)
+  }
+
+  positions <- pseudo_r_BP_Laksh(u=runif(n),
+                                 cumul_probs=distri$cumul_probs)
+  res <- distri[positions, 1:2]
+  rownames(res) <- NULL
+  colnames(res) <- c("X1", "X2")
+  res <- as.matrix(res)
+  return(res)
 }
