@@ -26,3 +26,4 @@ NumericVector aux_BP_Laksh(NumericVector input) {
   return NumericVector::create(part1 + part2);
 }
 
+

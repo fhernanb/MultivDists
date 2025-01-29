@@ -82,19 +82,53 @@ each row is taken to be a quantile and columns correspond to the number of dimen
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># Generating random values and moment estimations</span></span></span>
 <span class="r-in"><span><span class="va">l1</span> <span class="op">&lt;-</span> <span class="fl">1</span></span></span>
 <span class="r-in"><span><span class="va">l2</span> <span class="op">&lt;-</span> <span class="fl">2</span></span></span>
-<span class="r-in"><span><span class="fu"><a href="correct_alpha_BP_Laksh.html">correct_alpha_BP_Laksh</a></span><span class="op">(</span>l1<span class="op">=</span><span class="va">l1</span>, l2<span class="op">=</span><span class="va">l2</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $min_alpha</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] -2.97445</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $max_alpha</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 2.97445</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span><span class="va">alpha</span> <span class="op">&lt;-</span> <span class="op">-</span><span class="fl">2.7</span></span></span>
-<span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="dBP_Laksh.html">rBP_Laksh</a></span><span class="op">(</span>n<span class="op">=</span><span class="fl">500</span>, <span class="va">l1</span>, <span class="va">l2</span>, <span class="va">alpha</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu">moments_estim_BP_Laksh</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    l1_hat    l2_hat alpha_hat </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     1.018     1.908    -2.755 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    0.9940    2.0260   -2.9683 </span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Analizing example from Famoye (2010)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">freq</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">34</span>, <span class="fl">20</span>, <span class="fl">4</span>, <span class="fl">6</span>, <span class="fl">4</span>,</span></span>
+<span class="r-in"><span>          <span class="fl">17</span>, <span class="fl">7</span>, <span class="fl">0</span>, <span class="fl">0</span>, <span class="fl">0</span>,</span></span>
+<span class="r-in"><span>          <span class="fl">6</span>, <span class="fl">4</span>, <span class="fl">1</span>, <span class="fl">0</span>, <span class="fl">0</span>,</span></span>
+<span class="r-in"><span>          <span class="fl">0</span>, <span class="fl">4</span>, <span class="fl">0</span>, <span class="fl">0</span>, <span class="fl">0</span>,</span></span>
+<span class="r-in"><span>          <span class="fl">0</span>, <span class="fl">0</span>, <span class="fl">0</span>, <span class="fl">0</span>, <span class="fl">0</span>,</span></span>
+<span class="r-in"><span>          <span class="fl">2</span>, <span class="fl">0</span>, <span class="fl">0</span>, <span class="fl">0</span>, <span class="fl">0</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">data_table</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span><span class="va">freq</span>, ncol<span class="op">=</span><span class="fl">5</span>, byrow<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html" class="external-link">rownames</a></span><span class="op">(</span><span class="va">data_table</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fl">0</span><span class="op">:</span><span class="fl">5</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html" class="external-link">colnames</a></span><span class="op">(</span><span class="va">data_table</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fl">0</span><span class="op">:</span><span class="fl">4</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">data_table</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    0  1 2 3 4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 0 34 20 4 6 4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1 17  7 0 0 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2  6  4 1 0 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3  0  4 0 0 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4  0  0 0 0 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5  2  0 0 0 0</span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">long</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/table.html" class="external-link">as.data.frame.table</a></span><span class="op">(</span><span class="va">data_table</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="va">long</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html" class="external-link">nrow</a></span><span class="op">(</span><span class="va">long</span><span class="op">)</span>, <span class="va">long</span><span class="op">$</span><span class="va">Freq</span><span class="op">)</span>, <span class="op">-</span><span class="fl">3</span><span class="op">]</span></span></span>
+<span class="r-in"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.matrix.html" class="external-link">data.matrix</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/colSums.html" class="external-link">colMeans</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     Var1     Var2 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1.623853 1.724771 </span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/stats/cor.html" class="external-link">var</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           Var1      Var2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Var1  1.033129 -0.169300</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Var2 -0.169300  1.071696</span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/stats/cor.html" class="external-link">cor</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>            Var1       Var2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Var1  1.0000000 -0.1608955</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Var2 -0.1608955  1.0000000</span>
+<span class="r-in"><span><span class="fu">moments_estim_BP_Laksh</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    l1_hat    l2_hat alpha_hat </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    1.6239    1.7248   -1.2447 </span>
 </code></pre></div>
     </div>
   </div>

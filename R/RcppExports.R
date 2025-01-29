@@ -9,3 +9,11 @@ aux_BP_Laksh <- function(input) {
     .Call('_MultivDists_aux_BP_Laksh', PACKAGE = 'MultivDists', input)
 }
 
+#' Auxiliar cpp function to obtain the probability for a vector x.
+#' @param input numeric value with the information.
+#' @export
+#' @return returns the pmf for a vector.
+aux_ZIBP_Laksh <- function(input) {
+    .Call('_MultivDists_aux_ZIBP_Laksh', PACKAGE = 'MultivDists', input)
+}
+
