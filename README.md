@@ -1,5 +1,5 @@
 
-# MultivDists
+# MultivDists <img src="man/figures/logo.png" align="right" alt="" width="120" />
 
 <!-- badges: start -->
 [![R-CMD-check](https://github.com/fhernanb/MultivDists/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/fhernanb/MultivDists/actions/workflows/R-CMD-check.yaml)
