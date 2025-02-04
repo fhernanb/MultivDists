@@ -9,7 +9,7 @@ The goal of MultivDists is to ...
 
 ## Installation
 
-You can install the development version of MultivDists from [GitHub](https://github.com/) with:
+You can install the development version of MultivDists from GitHub with:
 
 ``` r
 # install.packages("pak")

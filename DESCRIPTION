@@ -12,7 +12,8 @@ Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.2
 Imports: 
     ggplot2,
-    Rcpp
+    Rcpp,
+    numDeriv
 LinkingTo: 
     Rcpp
 URL: https://github.com/fhernanb/MultivDists

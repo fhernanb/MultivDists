@@ -80,7 +80,7 @@ data$X2 <- factor(data$X2)
 library(ggplot2)
 ggplot(data, aes(X1, X2, fill=Prob)) +
   geom_tile() +
-  scale_fill_gradient(low="darkgreen", high="white")
+  scale_fill_gradient(low="darkgreen", high="yellow")
 
 # Generating random values and moment estimations
 l1 <- 1
@@ -90,6 +90,7 @@ psi <- 0.30
 
 x <- rZIBP_Laksh(n=500, l1, l2, alpha, psi)
 moments_estim_ZIBP_Laksh(x)
+
 }
 \references{
 Lakshminarayana, J., Pandit, S. N., & Srinivasa Rao, K. (1999). On a bivariate Poisson distribution. Communications in Statistics-Theory and Methods, 28(2), 267-276.
