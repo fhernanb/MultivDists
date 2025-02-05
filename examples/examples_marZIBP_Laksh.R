@@ -4,7 +4,7 @@ l2 <- 4
 alpha <- -0.90
 psi <- 0.2
 
-data1 <- rZIBP_Laksh(n=5000, l1=l1, l2=l2, alpha=alpha, psi=psi)
+data1 <- rZIBP_Laksh(n=100, l1=l1, l2=l2, alpha=alpha, psi=psi)
 data1 <- as.data.frame(data1)
 
 # To fit the model

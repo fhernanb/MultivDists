@@ -13,7 +13,7 @@
 #' @param initial.values a vector with possible initial values for the parameters.
 #'
 #' @returns
-#' Returns a object with class marZIBP_Laksh.
+#' Returns a object with class "marZIBPLaksh".
 #'
 #' @references
 #' Lakshminarayana, J., Pandit, S. N., & Srinivasa Rao, K. (1999). On a bivariate Poisson distribution. Communications in Statistics-Theory and Methods, 28(2), 267-276.
@@ -28,7 +28,7 @@ marZIBP_Laksh <- function(mu1.fo, mu2.fo, psi.fo, data,
   stopifnot (class(psi.fo) == "formula")
   matri <- model.matrix.marZIBP_Laksh(mu1.fo, mu2.fo, psi.fo, data)
   res <- fit.marZIBP_Laksh(matri, initial.values)
-  class(res) <- "marZIBP_Laksh"
+  class(res) <- "marZIBPLaksh"
   res
 }
 #' @importFrom stats model.matrix model.frame
@@ -134,9 +134,9 @@ ll_marZIBP_Laksh <- function(theta, y1, y2, X1, X2, W) {
 #' @author Freddy Hernandez-Barajas, \email{fhernanb@unal.edu.co}
 #'
 #' @description
-#' This function obtains the summary table for objects of class marZIBP_Laksh.
+#' This function obtains the summary table for objects of class marZIBPLaksh.
 #'
-#' @param object of class marZIBP_Laksh.
+#' @param object of class marZIBPLaksh.
 #'
 #' @returns
 #' Returns the summary table.
@@ -145,7 +145,7 @@ ll_marZIBP_Laksh <- function(theta, y1, y2, X1, X2, W) {
 #'
 #' @export
 #' @importFrom stats pnorm printCoefmat
-summary.marZIBP_Laksh <- function(object) {
+summary.marZIBPLaksh <- function(object) {
   .myenv <- environment()
   var.list <- as.list(object)
   list2env(var.list , envir = .myenv)
