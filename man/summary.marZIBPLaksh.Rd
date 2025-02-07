@@ -2,12 +2,17 @@
 % Please edit documentation in R/marZIBP_Laksh.R
 \name{summary.marZIBPLaksh}
 \alias{summary.marZIBPLaksh}
+\alias{print.marZIBPLaksh}
 \title{Summary table for marZIP - Laksh}
 \usage{
-\method{summary}{marZIBPLaksh}(object)
+\method{summary}{marZIBPLaksh}(object, ...)
+
+\method{print}{marZIBPLaksh}(object, ...)
 }
 \arguments{
 \item{object}{of class marZIBPLaksh.}
+
+\item{...}{aditional arguments.}
 }
 \value{
 Returns the summary table.

@@ -137,6 +137,7 @@ ll_marZIBP_Laksh <- function(theta, y1, y2, X1, X2, W) {
 #' This function obtains the summary table for objects of class marZIBPLaksh.
 #'
 #' @param object of class marZIBPLaksh.
+#' @param ... aditional arguments.
 #'
 #' @returns
 #' Returns the summary table.
@@ -145,7 +146,7 @@ ll_marZIBP_Laksh <- function(theta, y1, y2, X1, X2, W) {
 #'
 #' @export
 #' @importFrom stats pnorm printCoefmat
-summary.marZIBPLaksh <- function(object) {
+summary.marZIBPLaksh <- function(object, ...) {
   .myenv <- environment()
   var.list <- as.list(object)
   list2env(var.list , envir = .myenv)
@@ -185,4 +186,8 @@ summary.marZIBPLaksh <- function(object) {
   cat("---------------------------------------------------------------\n")
   printCoefmat(res.alpha, P.values=TRUE, has.Pvalue=TRUE)
   cat("---------------------------------------------------------------\n")
+}
+#' @rdname summary.marZIBPLaksh
+print.marZIBPLaksh <- function(object, ...) {
+  print("Please use the summary method to obtain complete information.")
 }
