@@ -5,7 +5,7 @@
 [![R-CMD-check](https://github.com/fhernanb/MultivDists/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/fhernanb/MultivDists/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
-The goal of MultivDists is to ...
+The goal of MultivDists is to implement multivariate statistical distributions.
 
 ## Installation
 
