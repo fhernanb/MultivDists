@@ -1,3 +1,5 @@
+
+# Example 1 ---------------------------------------------------------------
 # Probability for single values of X1 and X2
 dBP_Laksh(c(0, 0), l1=3, l2=4, alpha=1)
 dBP_Laksh(c(1, 0), l1=3, l2=4, alpha=1)
@@ -22,6 +24,8 @@ alpha <- -1.27
 probs <- dBP_Laksh(x=space, l1=l1, l2=l2, alpha=alpha)
 sum(probs)
 
+
+# Example 2 ---------------------------------------------------------------
 # Heat map for a BP_Laksh
 
 l1 <- 1
@@ -41,6 +45,8 @@ ggplot(data, aes(X1, X2, fill=Prob)) +
   geom_tile() +
   scale_fill_gradient(low="darkgreen", high="white")
 
+
+# Example 3 ---------------------------------------------------------------
 # Generating random values and moment estimations
 l1 <- 1
 l2 <- 2
@@ -49,3 +55,91 @@ alpha <- -2.7
 
 x <- rBP_Laksh(n=500, l1, l2, alpha)
 moments_estim_BP_Laksh(x)
+
+
+# Example 4 ---------------------------------------------------------------
+# Estimating the parameters using the loglik function
+
+# Loglik function
+llBP_Laksh <- function(param, x) {
+  l1    <- param[1]  # param: is the parameter vector
+  l2    <- param[2]
+  alpha <- param[3]
+  sum(dBP_Laksh(x=x, l1=l1, l2=l2, alpha=alpha, log=TRUE))
+}
+
+
+
+l1 <- 1
+l2 <- 2
+
+correct_alpha_BP_Laksh(l1=l1, l2=l2)
+
+alpha <- -2.7
+
+set.seed(12345)
+x <- rBP_Laksh(n=500, l1=l1, l2=l2, alpha=alpha)
+
+# To obtain reasonable values for alpha
+theta <- as.numeric(moments_estim_BP_Laksh(x))
+theta
+
+# To create start parameters
+min_alpha <- correct_alpha_BP_Laksh(l1=theta[1],
+                                    l2=theta[2])$min_alpha
+max_alpha <- correct_alpha_BP_Laksh(l1=theta[1],
+                                    l2=theta[2])$max_alpha
+
+start_param <- theta
+names(start_param) <- c("l1_hat", "l2_hat", "alpha_hat")
+start_param
+
+# Estimating parameters
+res1 <- optim(fn = llBP_Laksh,
+              par = start_param,
+              lower = c(0.001, 0.001, min_alpha),
+              upper = c(  Inf,   Inf, max_alpha),
+              method = "L-BFGS-B",
+              control = list(maxit=100000, fnscale=-1),
+              x=x)
+
+res1
+
+# Analizing example of Laksh (1999) ---------------------------------------
+
+x <- rep(0:5, each=6)
+y <- rep(0:5, times=6)
+freq <- c(7,  41, 54, 40, 21, 9,
+          36, 79, 83, 59, 30, 13,
+          39, 70, 69, 47, 25, 10,
+          24, 41, 39, 26, 14, 6,
+          10, 18, 18, 11, 6, 2,
+          3, 6, 6, 4, 2, 1)
+
+seed_plants <- NULL
+for (i in 1:36) {
+  temp <- matrix(c(x[i], y[i]),  ncol=2, nrow=freq[i], byrow=TRUE)
+  seed_plants <- rbind(seed_plants, temp)
+}
+
+seed_plants
+
+# Exploring some statistics
+colMeans(seed_plants)
+var(seed_plants)
+cor(seed_plants)
+
+# Moment estimators
+moments_estim_BP_Laksh(seed_plants)
+
+# Correct interval for alpha according to l1_hat and l2_hat
+correct_alpha_BP_Laksh(l1=1.6925, l2=2.0134)
+
+# Finding the log-likelihood estimators using
+optim(fn = llBP_Laksh,
+      par = c(1.6925, 2.0134, -1.3230),
+      lower = c(0.0001, 0.0001, -2.114373),
+      upper = c(Inf, Inf, 2.114373),
+      method = "L-BFGS-B",
+      control = list(maxit=100000, fnscale=-1),
+      x=seed_plants)

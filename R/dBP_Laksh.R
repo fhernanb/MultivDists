@@ -152,19 +152,27 @@ moments_estim_BP_Laksh <- function(x) {
   c_x_y <- sum((x[,1]-l1_hat) * (x[,2]-l2_hat)) / n
   alpha_hat <- c_x_y / (l1_hat * l2_hat * A * B * k^2)
 
-  # Checking if alpha_hat is inside the interval
-  min_alpha <- correct_alpha_BP_Laksh(l1=l1_hat, l2=l2_hat)$min_alpha
-  max_alpha <- correct_alpha_BP_Laksh(l1=l1_hat, l2=l2_hat)$max_alpha
-  alpha_hat <- ifelse(alpha_hat > max_alpha, max_alpha,
-                      ifelse(alpha_hat < min_alpha, min_alpha, alpha_hat))
+  # Auxiliar functio to check if alpha_hat is inside the interval
+  aux_check <- function(alpha_hat, l1_hat, l2_hat) {
+    min_alpha <- correct_alpha_BP_Laksh(l1=l1_hat, l2=l2_hat)$min_alpha
+    max_alpha <- correct_alpha_BP_Laksh(l1=l1_hat, l2=l2_hat)$max_alpha
+    alpha_hat <- ifelse(alpha_hat > max_alpha, max_alpha,
+                        ifelse(alpha_hat < min_alpha, min_alpha, alpha_hat))
+    return(alpha_hat)
+  }
 
-  # Using correlation
+  # Using the correlation to estimate alpha
   alpha_hat_cor <- cor(x)[2] / (sqrt(l1_hat*l2_hat)*k^2*exp(-(l1_hat+l2_hat)*k))
+
+  # Adjusting the alpha_hat's to ensure that it is inside in a correct interval
+  alpha_hat     <- aux_check(alpha_hat=alpha_hat,     l1_hat=l1_hat, l2_hat=l2_hat)
+  alpha_hat_cor <- aux_check(alpha_hat=alpha_hat_cor, l1_hat=l1_hat, l2_hat=l2_hat)
 
   res <- c(l1_hat=l1_hat,
            l2_hat=l2_hat,
-           alpha_hat=alpha_hat
-  )
+           #alpha_hat=alpha_hat,
+           alpha_hat_cor=alpha_hat_cor
+           )
 
   return(round(res, digits=4))
 }
