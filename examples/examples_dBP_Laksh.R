@@ -24,7 +24,6 @@ alpha <- -1.27
 probs <- dBP_Laksh(x=space, l1=l1, l2=l2, alpha=alpha)
 sum(probs)
 
-
 # Example 2 ---------------------------------------------------------------
 # Heat map for a BP_Laksh
 
@@ -43,11 +42,11 @@ data$X2 <- factor(data$X2)
 library(ggplot2)
 ggplot(data, aes(X1, X2, fill=Prob)) +
   geom_tile() +
-  scale_fill_gradient(low="darkgreen", high="white")
-
+  scale_fill_gradient(low="darkgreen", high="pink")
 
 # Example 3 ---------------------------------------------------------------
 # Generating random values and moment estimations
+
 l1 <- 1
 l2 <- 2
 correct_alpha_BP_Laksh(l1=l1, l2=l2)
@@ -55,7 +54,6 @@ alpha <- -2.7
 
 x <- rBP_Laksh(n=500, l1, l2, alpha)
 moments_estim_BP_Laksh(x)
-
 
 # Example 4 ---------------------------------------------------------------
 # Estimating the parameters using the loglik function
@@ -68,13 +66,10 @@ llBP_Laksh <- function(param, x) {
   sum(dBP_Laksh(x=x, l1=l1, l2=l2, alpha=alpha, log=TRUE))
 }
 
-
-
+# The known parameters
 l1 <- 1
 l2 <- 2
-
 correct_alpha_BP_Laksh(l1=l1, l2=l2)
-
 alpha <- -2.7
 
 set.seed(12345)
@@ -122,7 +117,7 @@ for (i in 1:36) {
   seed_plants <- rbind(seed_plants, temp)
 }
 
-seed_plants
+head(seed_plants)
 
 # Exploring some statistics
 colMeans(seed_plants)

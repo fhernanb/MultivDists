@@ -86,6 +86,7 @@
 <span class="r-in"><span><span class="va">alpha</span> <span class="op">&lt;-</span> <span class="op">-</span><span class="fl">0.90</span></span></span>
 <span class="r-in"><span><span class="va">psi</span> <span class="op">&lt;-</span> <span class="fl">0.2</span></span></span>
 <span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">12345678</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">data1</span> <span class="op">&lt;-</span> <span class="fu"><a href="dZIBP_Laksh.html">rZIBP_Laksh</a></span><span class="op">(</span>n<span class="op">=</span><span class="fl">100</span>, l1<span class="op">=</span><span class="va">l1</span>, l2<span class="op">=</span><span class="va">l2</span>, alpha<span class="op">=</span><span class="va">alpha</span>, psi<span class="op">=</span><span class="va">psi</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">data1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html" class="external-link">as.data.frame</a></span><span class="op">(</span><span class="va">data1</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
@@ -97,20 +98,20 @@
 <span class="r-in"><span>                      data<span class="op">=</span><span class="va">data1</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> N = 4, M = 5 machine precision = 2.22045e-16</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> At X0, 0 variables are exactly at the bounds</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> At iterate     0  f=       419.22  |proj g|=       122.14</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> At iterate    10  f =       352.29  |proj g|=       0.35757</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> At iterate    20  f =       351.87  |proj g|=    2.9097e-06</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> At iterate     0  f=       484.52  |proj g|=       153.42</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> At iterate    10  f =        381.9  |proj g|=      0.031223</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> At iterate    20  f =       381.89  |proj g|=       0.09098</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> iterations 20</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> function evaluations 23</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> segments explored during Cauchy searches 21</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> iterations 23</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> function evaluations 30</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> segments explored during Cauchy searches 24</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> BFGS updates skipped 0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> active bounds at final generalized Cauchy point 1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> norm of the final projected gradient 2.90973e-06</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> final function value 351.873</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> active bounds at final generalized Cauchy point 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> norm of the final projected gradient 0.00028121</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> final function value 381.891</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> F = 351.873</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> final  value 351.873283 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> F = 381.891</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> final  value 381.890661 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> converged</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># To obtain the usual summary table</span></span></span>
@@ -119,58 +120,58 @@
 <span class="r-out co"><span class="r-pr">#&gt;</span> Fixed effects for log(mu1) </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ---------------------------------------------------------------</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>             Estimate Std. Error z value  Pr(&gt;|z|)    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> (Intercept) 0.785389   0.088002  8.9246 &lt; 2.2e-16 ***</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> (Intercept) 0.959844   0.075765  12.669 &lt; 2.2e-16 ***</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ---</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ---------------------------------------------------------------</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Fixed effects for log(mu2) </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ---------------------------------------------------------------</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>             Estimate Std. Error z value  Pr(&gt;|z|)    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> (Intercept) 1.011645   0.082418  12.275 &lt; 2.2e-16 ***</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> (Intercept) 1.169665   0.070763  16.529 &lt; 2.2e-16 ***</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ---</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ---------------------------------------------------------------</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Fixed effects for logit(psi) </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ---------------------------------------------------------------</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>             Estimate Std. Error z value  Pr(&gt;|z|)    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> (Intercept) -1.15268    0.23515 -4.9019 9.493e-07 ***</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> (Intercept) -1.66049    0.27439 -6.0515 1.435e-09 ***</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ---</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ---------------------------------------------------------------</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Estimation for alpha </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ---------------------------------------------------------------</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>             Estimate Std. Error z value Pr(&gt;|z|)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> (Intercept)  -1.3278     4.6117 -0.2879   0.7734</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> (Intercept) -0.79917    5.13821 -0.1555   0.8764</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ---------------------------------------------------------------</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># To explore the estimations of l1, l2, mu and p</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># To obtain E(Y1)=v1 and E(Y2)=v2</span></span></span>
 <span class="r-in"><span><span class="va">mod1</span><span class="op">$</span><span class="va">fitted.mu1</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 2.193259</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 2.611288</span>
 <span class="r-in"><span><span class="va">mod1</span><span class="op">$</span><span class="va">fitted.mu2</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 2.750122</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 3.220912</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># To compare sample means with v1 and v2</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/colSums.html" class="external-link">colMeans</a></span><span class="op">(</span><span class="va">data1</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   X1   X2 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2.19 2.75 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2.61 3.22 </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># To obtain alpha and psi</span></span></span>
 <span class="r-in"><span><span class="va">mod1</span><span class="op">$</span><span class="va">fitted.alpha</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] -1.327838</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] -0.7991705</span>
 <span class="r-in"><span><span class="va">mod1</span><span class="op">$</span><span class="va">fitted.psi</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0.2400007</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0.1596964</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># To obtain l1 and l2</span></span></span>
 <span class="r-in"><span><span class="va">mod1</span><span class="op">$</span><span class="va">fitted.l1</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 2.88587</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 3.107553</span>
 <span class="r-in"><span><span class="va">mod1</span><span class="op">$</span><span class="va">fitted.l2</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 3.618585</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 3.833034</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Example 2 ---------------------------------------------------------------</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="va">gen_data_ZIBP_Laksh</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">n</span><span class="op">=</span><span class="fl">10</span><span class="op">)</span> <span class="op">{</span></span></span>
+<span class="r-in"><span><span class="va">gen_data_ZIBP_Laksh</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">n</span><span class="op">=</span><span class="fl">100</span><span class="op">)</span> <span class="op">{</span></span></span>
 <span class="r-in"><span>  <span class="co"># To generate the covariates</span></span></span>
 <span class="r-in"><span>  <span class="va">x1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html" class="external-link">runif</a></span><span class="op">(</span>n<span class="op">=</span><span class="va">n</span><span class="op">)</span></span></span>
 <span class="r-in"><span>  <span class="va">x2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html" class="external-link">runif</a></span><span class="op">(</span>n<span class="op">=</span><span class="va">n</span><span class="op">)</span></span></span>
@@ -179,7 +180,7 @@
 <span class="r-in"><span>  <span class="va">mu1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html" class="external-link">exp</a></span><span class="op">(</span><span class="op">-</span><span class="fl">2</span> <span class="op">+</span> <span class="fl">3.5</span> <span class="op">*</span> <span class="va">x1</span> <span class="op">+</span> <span class="fl">2.7</span> <span class="op">*</span> <span class="va">x2</span><span class="op">)</span></span></span>
 <span class="r-in"><span>  <span class="va">mu2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html" class="external-link">exp</a></span><span class="op">(</span><span class="op">-</span><span class="fl">1</span> <span class="op">+</span> <span class="fl">1.3</span> <span class="op">*</span> <span class="va">x1</span> <span class="op">+</span> <span class="fl">2.1</span> <span class="op">*</span> <span class="va">x2</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span>  <span class="co"># To generate the p</span></span></span>
+<span class="r-in"><span>  <span class="co"># To generate the psi</span></span></span>
 <span class="r-in"><span>  <span class="va">logit_inv</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html" class="external-link">exp</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">/</span> <span class="op">(</span><span class="fl">1</span><span class="op">+</span><span class="fu"><a href="https://rdrr.io/r/base/Log.html" class="external-link">exp</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-in"><span>  <span class="va">psi</span>  <span class="op">&lt;-</span> <span class="fu">logit_inv</span><span class="op">(</span><span class="op">-</span><span class="fl">2.4</span> <span class="op">+</span> <span class="fl">1.2</span> <span class="op">*</span> <span class="va">x2</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
@@ -205,55 +206,58 @@
 <span class="r-in"><span>  <span class="kw"><a href="https://rdrr.io/r/base/function.html" class="external-link">return</a></span><span class="op">(</span><span class="va">dataset</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
 <span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123456</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">data2</span> <span class="op">&lt;-</span> <span class="fu">gen_data_ZIBP_Laksh</span><span class="op">(</span>n<span class="op">=</span><span class="fl">100</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">data2</span>, n<span class="op">=</span><span class="fl">8</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   y1 y2        x1         x2      mu1      mu2 alpha        psi       l1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1  1  1 0.8136799 0.04846792 2.661109 1.173002    -1 0.08771668 2.916976</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2  1  1 0.5206502 0.15667026 1.277986 1.005870    -1 0.09867843 1.417902</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3  0  0 0.7607437 0.39113569 5.577103 2.248699    -1 0.12668007 6.386094</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4  2  4 0.1071676 0.62680525 1.069788 1.577133    -1 0.16140195 1.275686</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5  0  0 0.9139496 0.20371246 5.747974 1.851379    -1 0.10381419 6.413819</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6  4  2 0.6634663 0.24752010 2.692409 1.465649    -1 0.10880792 3.021132</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 7  1  0 0.5584108 0.24633420 1.858073 1.275369    -1 0.10867000 2.084607</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 8  5  1 0.5009139 0.58531293 3.794466 2.411732    -1 0.15477578 4.489301</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>         l2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1 1.285787</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2 1.115995</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3 2.574886</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4 1.880679</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5 2.065843</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6 1.644594</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 7 1.430861</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 8 2.853364</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   y1 y2         x1         x2        mu1       mu2 alpha        psi         l1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1  3  1 0.79778432 0.03855369  2.4506176 1.1253368    -1 0.08676931  2.6834595</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2  0  0 0.75356509 0.65944752 11.2232345 3.9136655    -1 0.16677432 13.4696215</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3  0  3 0.39125568 0.31146853  1.2341222 1.1767028    -1 0.11647553  1.3968172</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4  0  1 0.34155670 0.18956915  0.7462349 0.8539513    -1 0.10224576  0.8312240</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5  0  0 0.36129411 0.62607131  2.5984677 2.1911622    -1 0.16128277  3.0981452</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6  0  1 0.19834473 0.51671846  1.0934594 1.4091081    -1 0.14431081  1.2778698</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 7 14 10 0.53485796 0.92794573 10.7774537 5.1758386    -1 0.21645173 13.7546774</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 8  0  0 0.09652624 0.05837738  0.2221196 0.4714589    -1 0.08867293  0.2437321</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          l2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1 1.2322591</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2 4.6970055</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3 1.3318282</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4 0.9512083</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5 2.6125161</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6 1.6467522</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 7 6.6056410</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 8 0.5173323</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">mod2</span> <span class="op">&lt;-</span> <span class="cn">NULL</span></span></span>
 <span class="r-in"><span><span class="va">mod2</span> <span class="op">&lt;-</span> <span class="fu"><a href="marZIBP_Laksh.html">marZIBP_Laksh</a></span><span class="op">(</span>mu1.fo<span class="op">=</span><span class="va">y1</span><span class="op">~</span><span class="va">x1</span><span class="op">+</span><span class="va">x2</span>,</span></span>
 <span class="r-in"><span>                      mu2.fo<span class="op">=</span><span class="va">y2</span><span class="op">~</span><span class="va">x1</span><span class="op">+</span><span class="va">x2</span>,</span></span>
-<span class="r-in"><span>                      psi.fo<span class="op">=</span><span class="op">~</span><span class="va">x1</span><span class="op">+</span><span class="va">x2</span>,</span></span>
+<span class="r-in"><span>                      psi.fo<span class="op">=</span><span class="op">~</span><span class="va">x2</span>,</span></span>
 <span class="r-in"><span>                      data<span class="op">=</span><span class="va">data2</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> N = 10, M = 5 machine precision = 2.22045e-16</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> N = 9, M = 5 machine precision = 2.22045e-16</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> At X0, 0 variables are exactly at the bounds</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> At iterate     0  f=       1128.8  |proj g|=        429.1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> At iterate    10  f =       335.18  |proj g|=        13.512</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> At iterate    20  f =       331.99  |proj g|=        3.9397</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> At iterate    30  f =       330.77  |proj g|=        2.6384</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> At iterate    40  f =       329.45  |proj g|=        2.5163</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> At iterate    50  f =       329.19  |proj g|=       0.11732</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> At iterate    60  f =       329.19  |proj g|=       0.07072</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> At iterate    70  f =       329.19  |proj g|=      0.077563</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> At iterate    80  f =       329.19  |proj g|=      0.023409</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> At iterate    90  f =       329.19  |proj g|=      0.011706</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> At iterate     0  f=       1391.9  |proj g|=       537.42</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> At iterate    10  f =       362.78  |proj g|=        11.172</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> At iterate    20  f =       352.64  |proj g|=         2.597</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> At iterate    30  f =       352.58  |proj g|=       0.61651</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> At iterate    40  f =        352.4  |proj g|=        1.0726</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> At iterate    50  f =       352.39  |proj g|=       0.30517</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> At iterate    60  f =       352.38  |proj g|=       0.39111</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> At iterate    70  f =       352.37  |proj g|=       0.32202</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> At iterate    80  f =       352.37  |proj g|=      0.012024</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> At iterate    90  f =       352.37  |proj g|=      0.039797</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> At iterate   100  f =       352.37  |proj g|=      0.019207</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> At iterate   110  f =       352.37  |proj g|=        0.0104</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> iterations 91</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> function evaluations 101</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> segments explored during Cauchy searches 92</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> iterations 110</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> function evaluations 124</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> segments explored during Cauchy searches 111</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> BFGS updates skipped 0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> active bounds at final generalized Cauchy point 1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> norm of the final projected gradient 0.00679497</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> final function value 329.186</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> active bounds at final generalized Cauchy point 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> norm of the final projected gradient 0.0104005</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> final function value 352.367</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> F = 329.186</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> final  value 329.186197 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> F = 352.367</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> final  value 352.367190 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> converged</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">mod2</span><span class="op">)</span></span></span>
@@ -261,36 +265,37 @@
 <span class="r-out co"><span class="r-pr">#&gt;</span> Fixed effects for log(mu1) </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ---------------------------------------------------------------</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>             Estimate Std. Error z value  Pr(&gt;|z|)    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> (Intercept) -2.37575    0.23741 -10.007 &lt; 2.2e-16 ***</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> x1           4.02069    0.24932  16.127 &lt; 2.2e-16 ***</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> x2           2.64032    0.23925  11.036 &lt; 2.2e-16 ***</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> (Intercept) -1.84880    0.18034 -10.252 &lt; 2.2e-16 ***</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> x1           3.27174    0.16686  19.608 &lt; 2.2e-16 ***</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> x2           2.84826    0.19598  14.533 &lt; 2.2e-16 ***</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ---</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ---------------------------------------------------------------</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Fixed effects for log(mu2) </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ---------------------------------------------------------------</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>             Estimate Std. Error z value  Pr(&gt;|z|)    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> (Intercept) -1.80931    0.28243 -6.4063 1.491e-10 ***</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> x1           1.54108    0.27562  5.5914 2.253e-08 ***</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> x2           3.02801    0.32662  9.2707 &lt; 2.2e-16 ***</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> (Intercept) -1.32182    0.22616 -5.8445 5.080e-09 ***</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> x1           1.40894    0.20975  6.7171 1.853e-11 ***</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> x2           2.58735    0.26971  9.5929 &lt; 2.2e-16 ***</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ---</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ---------------------------------------------------------------</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Fixed effects for logit(psi) </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ---------------------------------------------------------------</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>             Estimate Std. Error z value Pr(&gt;|z|)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> (Intercept) -0.67926    1.13682 -0.5975   0.5502</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> x1          -0.72202    1.15455 -0.6254   0.5317</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> x2          -0.96692    1.30247 -0.7424   0.4579</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>             Estimate Std. Error z value Pr(&gt;|z|)  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> (Intercept) -2.55624    1.01883 -2.5090  0.01211 *</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> x2           0.38412    1.42714  0.2692  0.78781  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ---</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ---------------------------------------------------------------</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Estimation for alpha </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ---------------------------------------------------------------</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>             Estimate Std. Error z value Pr(&gt;|z|)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> (Intercept)   1.1838     1.5719  0.7531   0.4514</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> (Intercept)  -0.9870     1.5567  -0.634   0.5261</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ---------------------------------------------------------------</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">mod2</span><span class="op">$</span><span class="va">fitted.alpha</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 1.183809</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] -0.9870002</span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>

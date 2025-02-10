@@ -141,9 +141,21 @@ moments_estim_ZIBP_Laksh <- function(x) {
   x_discounting_zeros <- rbind(x_without_zeros,
                                small_zeros)
 
+  # Auxiliar functio to check if alpha_hat is inside the interval
+  aux_check <- function(alpha_hat, l1_hat, l2_hat) {
+    min_alpha <- correct_alpha_BP_Laksh(l1=l1_hat, l2=l2_hat)$min_alpha
+    max_alpha <- correct_alpha_BP_Laksh(l1=l1_hat, l2=l2_hat)$max_alpha
+    alpha_hat <- ifelse(alpha_hat > max_alpha, max_alpha,
+                        ifelse(alpha_hat < min_alpha, min_alpha, alpha_hat))
+    return(alpha_hat)
+  }
+
   # For alpha
-  aux <- moments_estim_BP_Laksh(x_discounting_zeros)[3]
+  aux <- moments_estim_BP_Laksh(x_without_zeros)[3]
   alpha_hat <- as.numeric(aux)
+
+  # Adjusting the alpha_hat's to ensure that it is inside in a correct interval
+  alpha_hat <- aux_check(alpha_hat=alpha_hat, l1_hat=l1_hat, l2_hat=l2_hat)
 
   res <- c(l1_hat=l1_hat,
            l2_hat=l2_hat,
@@ -152,3 +164,4 @@ moments_estim_ZIBP_Laksh <- function(x) {
 
   return(round(res, digits=4))
 }
+

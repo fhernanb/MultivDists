@@ -27,6 +27,7 @@ l2 <- 4
 alpha <- -0.90
 psi <- 0.2
 
+set.seed(12345678)
 data1 <- rZIBP_Laksh(n=100, l1=l1, l2=l2, alpha=alpha, psi=psi)
 data1 <- as.data.frame(data1)
 
@@ -59,7 +60,7 @@ mod1$fitted.l2[1]
 
 # Example 2 ---------------------------------------------------------------
 
-gen_data_ZIBP_Laksh <- function(n=10) {
+gen_data_ZIBP_Laksh <- function(n=100) {
   # To generate the covariates
   x1 <- runif(n=n)
   x2 <- runif(n=n)
@@ -68,7 +69,7 @@ gen_data_ZIBP_Laksh <- function(n=10) {
   mu1 <- exp(-2 + 3.5 * x1 + 2.7 * x2)
   mu2 <- exp(-1 + 1.3 * x1 + 2.1 * x2)
 
-  # To generate the p
+  # To generate the psi
   logit_inv <- function(x) exp(x) / (1+exp(x))
   psi  <- logit_inv(-2.4 + 1.2 * x2)
 
@@ -94,13 +95,14 @@ gen_data_ZIBP_Laksh <- function(n=10) {
   return(dataset)
 }
 
+set.seed(123456)
 data2 <- gen_data_ZIBP_Laksh(n=100)
 head(data2, n=8)
 
 mod2 <- NULL
 mod2 <- marZIBP_Laksh(mu1.fo=y1~x1+x2,
                       mu2.fo=y2~x1+x2,
-                      psi.fo=~x1+x2,
+                      psi.fo=~x2,
                       data=data2)
 
 summary(mod2)
