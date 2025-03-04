@@ -5,9 +5,9 @@
 \alias{rBP_Geoffroy}
 \title{Bivariate Poisson Distribution - Geoffroy}
 \usage{
-dBP_Geoffroy(x, l1, l2, mu, log = FALSE)
+dBP_Geoffroy(x, l1, l2, l0, log = FALSE)
 
-rBP_Geoffroy(n, l1, l2, mu)
+rBP_Geoffroy(n, l1, l2, l0)
 }
 \arguments{
 \item{x}{vector or matrix of quantiles. When \code{x} is a matrix,
@@ -17,7 +17,7 @@ each row is taken to be a quantile and columns correspond to the number of dimen
 
 \item{l2}{mean for \eqn{Z_2} variable with Poisson distribution.}
 
-\item{mu}{mean for \eqn{U} variable with Poisson distribution.}
+\item{l0}{mean for \eqn{U} variable with Poisson distribution.}
 
 \item{log}{logical; if \code{TRUE}, densities d are given as log(d).}
 
@@ -34,16 +34,16 @@ under the parameterization of Geoffroy et. al (2021).
 
 # Example 1 ---------------------------------------------------------------
 # Probability for single values of X1 and X2
-dBP_Geoffroy(c(0, 0), l1=3, l2=4, mu=1)
-dBP_Geoffroy(c(1, 0), l1=3, l2=4, mu=1)
-dBP_Geoffroy(c(0, 1), l1=3, l2=4, mu=1)
+dBP_Geoffroy(c(0, 0), l1=3, l2=4, l0=1)
+dBP_Geoffroy(c(1, 0), l1=3, l2=4, l0=1)
+dBP_Geoffroy(c(0, 1), l1=3, l2=4, l0=1)
 
 # Probability for a matrix the values of X1 and X2
 x <- matrix(c(0, 0,
               1, 0,
               0, 1), ncol=2, byrow=TRUE)
 x
-dBP_Geoffroy(x=x, l1=3, l2=4, mu=1)
+dBP_Geoffroy(x=x, l1=3, l2=4, l0=1)
 
 # Checking if the probabilities sum 1
 val_x1 <- val_x2 <- 0:50
@@ -52,9 +52,9 @@ space <- as.matrix(space)
 
 l1 <- 3
 l2 <- 4
-mu <- 5
+l0 <- 5
 
-probs <- dBP_Geoffroy(x=space, l1=l1, l2=l2, mu=mu)
+probs <- dBP_Geoffroy(x=space, l1=l1, l2=l2, l0=l0)
 sum(probs)
 
 # Example 2 ---------------------------------------------------------------
@@ -62,12 +62,12 @@ sum(probs)
 
 l1 <- 1
 l2 <- 2
-mu <- 4
+l0 <- 4
 
 X1 <- 0:10
 X2 <- 0:10
 data <- expand.grid(X1=X1, X2=X2)
-data$Prob <- dBP_Geoffroy(x=data, l1=l1, l2=l2, mu=mu)
+data$Prob <- dBP_Geoffroy(x=data, l1=l1, l2=l2, l0=l0)
 data$X1 <- factor(data$X1)
 data$X2 <- factor(data$X2)
 
@@ -81,9 +81,9 @@ ggplot(data, aes(X1, X2, fill=Prob)) +
 
 l1 <- 1
 l2 <- 2
-mu <- 4
+l0 <- 4
 
-x <- rBP_Geoffroy(n=500, l1, l2, mu)
+x <- rBP_Geoffroy(n=500, l1, l2, l0)
 moments_estim_BP_Geoffroy(x)
 
 # Example 4 ---------------------------------------------------------------
@@ -93,24 +93,21 @@ moments_estim_BP_Geoffroy(x)
 llBP_Geoffroy <- function(param, x) {
   l1 <- param[1]  # param: is the parameter vector
   l2 <- param[2]
-  mu <- param[3]
-  sum(dBP_Geoffroy(x=x, l1=l1, l2=l2, mu=mu, log=TRUE))
+  l0 <- param[3]
+  sum(dBP_Geoffroy(x=x, l1=l1, l2=l2, l0=l0, log=TRUE))
 }
 
 # The known parameters
 l1 <- 1
 l2 <- 2
-mu <- 4
+l0 <- 4
 
 set.seed(12345)
-x <- rBP_Geoffroy(n=500, l1=l1, l2=l2, mu=mu)
+x <- rBP_Geoffroy(n=500, l1=l1, l2=l2, l0=l0)
 
-# To obtain reasonable values for mu
-theta <- as.numeric(moments_estim_BP_Geoffroy(x))
-theta
-
-start_param <- theta
-names(start_param) <- c("l1_hat", "l2_hat", "mu_hat")
+# To obtain reasonable values for l0
+start_param <- moments_estim_BP_Geoffroy(x)
+start_param
 
 # Estimating parameters
 res1 <- optim(fn = llBP_Geoffroy,

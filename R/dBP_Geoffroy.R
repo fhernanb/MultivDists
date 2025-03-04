@@ -11,7 +11,7 @@
 #' @param n number of random observations.
 #' @param l1 mean for \eqn{Z_1} variable with Poisson distribution.
 #' @param l2 mean for \eqn{Z_2} variable with Poisson distribution.
-#' @param mu mean for \eqn{U} variable with Poisson distribution.
+#' @param l0 mean for \eqn{U} variable with Poisson distribution.
 #' @param log logical; if \code{TRUE}, densities d are given as log(d).
 #'
 #' @returns
@@ -25,11 +25,11 @@
 #' @export
 #' @useDynLib MultivDists
 #' @importFrom Rcpp sourceCpp
-dBP_Geoffroy <- function(x, l1, l2, mu, log=FALSE) {
+dBP_Geoffroy <- function(x, l1, l2, l0, log=FALSE) {
   # Initial checks
   if(any(l1 <= 0)) stop("lambda_1 must be positive.")
   if(any(l2 <= 0)) stop("lambda_2 must be positive.")
-  if(any(mu < 0))  stop("lambda_2 can not be negative.")
+  if(any(l0 <= 0)) stop("lambda_0 must be positive.")
 
   if(is.vector(x)) {
     if (length(x) !=2) stop("The vector length must be 2.")
@@ -37,17 +37,17 @@ dBP_Geoffroy <- function(x, l1, l2, mu, log=FALSE) {
   }
 
   ## Begin Auxiliar function
-  phi <- function(x, l1, l2, mu) {
+  phi <- function(x, l1, l2, l0) {
     s <- 0:min(x)
-    num <- mu^s*l1^(x[1]-s)*l2^(x[2]-s)
+    num <- l0^s*l1^(x[1]-s)*l2^(x[2]-s)
     den <- factorial(s) * factorial(x[1]-s) * factorial(x[2]-s)
     res <- sum(num/den)
     res
   }
   ## End Auxiliar function
 
-  res <- apply(X=x, MARGIN=1, FUN=phi, l1=l1, l2=l2, mu=mu)
-  res <- exp(-l1-l2-mu) * res
+  res <- apply(X=x, MARGIN=1, FUN=phi, l1=l1, l2=l2, l0=l0)
+  res <- exp(-l1-l2-l0) * res
   if (log)
     log(res)
   else
@@ -59,11 +59,11 @@ dBP_Geoffroy <- function(x, l1, l2, mu, log=FALSE) {
 #' @export
 #' @useDynLib MultivDists
 #' @importFrom Rcpp sourceCpp
-rBP_Geoffroy <- function(n, l1, l2, mu) {
+rBP_Geoffroy <- function(n, l1, l2, l0) {
 
   z1 <- rpois(n=n, lambda=l1)
   z2 <- rpois(n=n, lambda=l2)
-  u  <- rpois(n=n, lambda=mu)
+  u  <- rpois(n=n, lambda=l0)
   x1 <- z1 + u
   x2 <- z2 + u
   x <- cbind(x1, x2)
@@ -94,20 +94,16 @@ rBP_Geoffroy <- function(n, l1, l2, mu) {
 #' @export
 moments_estim_BP_Geoffroy <- function(x) {
 
-  # For mu
-  mu_hat <- abs(cov(x)[2])
+  # For l0
+  l0_hat <- abs(cov(x)[2])
 
   # For l1
-  l1_hat <- mean(x[,1]) - mu_hat
+  l1_hat <- mean(x[,1]) - l0_hat
 
   # For l1
-  l2_hat <- mean(x[,2]) - mu_hat
+  l2_hat <- mean(x[,2]) - l0_hat
 
-  res <- c(l1_hat=l1_hat,
-           l2_hat=l2_hat,
-           mu_hat=mu_hat
-  )
-
-  return(round(res, digits=4))
+  theta_hat <- c(l1_hat=l1_hat, l2_hat=l2_hat, l0_hat=l0_hat)
+  return(theta_hat)
 }
 

@@ -33,6 +33,7 @@ dZIBP_Laksh <- function(x, l1, l2, alpha, psi, log=FALSE) {
   # Initial checks
   if(any(l1 <= 0)) stop("lambda_1 must be positive.")
   if(any(l2 <= 0)) stop("lambda_2 must be positive.")
+  if(any(psi<0 | psi>1)) stop("psi must be in [0, 1].")
 
   if(is.vector(x)) {
     if (length(x) != 2) stop("The vector length must be 2.")
@@ -55,6 +56,11 @@ dZIBP_Laksh <- function(x, l1, l2, alpha, psi, log=FALSE) {
 #' @importFrom Rcpp sourceCpp
 rZIBP_Laksh <- function(n, l1, l2, alpha, psi,
                         max_val_x1=NULL, max_val_x2=NULL) {
+
+  if(any(l1 <= 0)) stop("lambda_1 must be positive.")
+  if(any(l2 <= 0)) stop("lambda_2 must be positive.")
+  if(any(psi<0 | psi>1)) stop("psi must be in [0, 1].")
+  if(n <= 0) stop("n must be a positive integer")
 
   if(is.null(max_val_x1)) max_val_x1 <- 100
   if(is.null(max_val_x2)) max_val_x2 <- 100
