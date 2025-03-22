@@ -1,9 +1,10 @@
 <urlset xmlns = 'http://www.sitemaps.org/schemas/sitemap/0.9'>
 <url><loc>/404.html</loc></url>
-<url><loc>/authors.html</loc></url>
-<url><loc>/index.html</loc></url>
 <url><loc>/LICENSE-text.html</loc></url>
 <url><loc>/LICENSE.html</loc></url>
+<url><loc>/authors.html</loc></url>
+<url><loc>/index.html</loc></url>
+<url><loc>/reference/ZIBP_Geoffroy.html</loc></url>
 <url><loc>/reference/aux_BP_Laksh.html</loc></url>
 <url><loc>/reference/aux_ZIBP_Laksh.html</loc></url>
 <url><loc>/reference/correct_alpha_BP_Laksh.html</loc></url>
@@ -18,10 +19,9 @@
 <url><loc>/reference/moments_estim_BP_Laksh.html</loc></url>
 <url><loc>/reference/moments_estim_ZIBP_Geoffroy.html</loc></url>
 <url><loc>/reference/moments_estim_ZIBP_Laksh.html</loc></url>
+<url><loc>/reference/summary.ZIBPGeoffroy.html</loc></url>
 <url><loc>/reference/summary.marZIBPGeoffroy.html</loc></url>
 <url><loc>/reference/summary.marZIBPLaksh.html</loc></url>
 <url><loc>/reference/summary.marZIBP_Laksh.html</loc></url>
-<url><loc>/reference/summary.ZIBPGeoffroy.html</loc></url>
-<url><loc>/reference/ZIBP_Geoffroy.html</loc></url>
 </urlset>
 
