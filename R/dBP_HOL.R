@@ -1,10 +1,10 @@
-#' Bivariate Poisson Distribution - Geoffroy
+#' Bivariate Poisson Distribution - Holgate
 #'
 #' @author Freddy Hernandez-Barajas, \email{fhernanb@unal.edu.co}
 #'
 #' @description
 #' This function obtains the probability for the Bivariate Poisson distribution
-#' under the parameterization of Geoffroy et. al (2021).
+#' under the parameterization of Holgate et. al (1964).
 #'
 #' @param x vector or matrix of quantiles. When \code{x} is a matrix,
 #' each row is taken to be a quantile and columns correspond to the number of dimensions \code{p}.
@@ -18,14 +18,16 @@
 #' Returns the density for a given data \code{x}.
 #'
 #' @references
-#' Kouakou, K. J. G., Hili, O., & Dupuy, J. F. (2021). Estimation in the zero-inflated bivariate Poisson model with an application to health-care utilization data. Afrika Statistika, 16(2), 2767-2788.
+#' P. Holgate. Estimation for the bivariate poisson distribution.
+#' Biometrika, 51(1/2):241–245, 1964. ISSN 00063444, 14643510.
+#' URL http://www.jstor.org/stable/2334210.
 #'
-#' @example examples/examples_dBP_Geoffroy.R
+#' @example examples/examples_dBP_HOL.R
 #'
 #' @export
 #' @useDynLib MultivDists
 #' @importFrom Rcpp sourceCpp
-dBP_Geoffroy <- function(x, l1, l2, l0, log=FALSE) {
+dBP_HOL <- function(x, l1, l2, l0, log=FALSE) {
   # Initial checks
   if(any(l1 <= 0)) stop("lambda_1 must be positive.")
   if(any(l2 <= 0)) stop("lambda_2 must be positive.")
@@ -54,12 +56,12 @@ dBP_Geoffroy <- function(x, l1, l2, l0, log=FALSE) {
     res
 }
 #'
-#' @rdname dBP_Geoffroy
+#' @rdname dBP_HOL
 #' @importFrom stats rpois cov
 #' @export
 #' @useDynLib MultivDists
 #' @importFrom Rcpp sourceCpp
-rBP_Geoffroy <- function(n, l1, l2, l0) {
+rBP_HOL <- function(n, l1, l2, l0) {
 
   z1 <- rpois(n=n, lambda=l1)
   z2 <- rpois(n=n, lambda=l2)
@@ -71,7 +73,7 @@ rBP_Geoffroy <- function(n, l1, l2, l0) {
   res <- as.matrix(x)
   return(x)
 }
-#' Moment estimations for Bivariate Poisson Distribution - Geoffroy
+#' Moment estimations for Bivariate Poisson Distribution - Holgate
 #'
 #' @author Freddy Hernandez-Barajas, \email{fhernanb@unal.edu.co}
 #'
@@ -86,13 +88,15 @@ rBP_Geoffroy <- function(n, l1, l2, l0) {
 #' Returns a vector with \eqn{\hat{\lambda_1}}, \eqn{\hat{\lambda_2}} and \eqn{\hat{\alpha}}.
 #'
 #' @references
-#' Kouakou, K. J. G., Hili, O., & Dupuy, J. F. (2021). Estimation in the zero-inflated bivariate Poisson model with an application to health-care utilization data. Afrika Statistika, 16(2), 2767-2788.
+#' P. Holgate. Estimation for the bivariate poisson distribution.
+#' Biometrika, 51(1/2):241–245, 1964. ISSN 00063444, 14643510.
+#' URL http://www.jstor.org/stable/2334210.
 #'
-#' @example examples/examples_dBP_Geoffroy.R
+#' @example examples/examples_dBP_HOL.R
 #'
 #' @importFrom stats cov
 #' @export
-moments_estim_BP_Geoffroy <- function(x) {
+moments_estim_BP_HOL <- function(x) {
 
   # For l0
   l0_hat <- abs(cov(x)[2])

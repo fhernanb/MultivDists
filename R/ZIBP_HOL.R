@@ -1,10 +1,10 @@
-#' Zero Inflated Bivariate Poisson model - Geoffroy
+#' Zero Inflated Bivariate Poisson model - Holgate
 #'
 #' @author Freddy Hernandez-Barajas, \email{fhernanb@unal.edu.co}
 #'
 #' @description
 #' This function fit a Zero Inflated Bivariate Poisson model
-#' under Geoffroy et. al (2021).
+#' under Holgate (1964) and Geoffroy et. al (2021).
 #'
 #' @param l1.fo a formula object to explain the parameter \eqn{\lambda_1}, the first response \eqn{X_1} on the left of an ~ operator, and the terms, separated by operators, on the right.
 #' @param l2.fo a formula object to explain the parameter \eqn{\lambda_2}, the second response \eqn{X_2} on the left of an ~ operator, and the terms, separated by operators, on the right.
@@ -14,27 +14,27 @@
 #' @param optimizer the optimizer to be used: nlminb, optim.
 #'
 #' @returns
-#' Returns a object with class "ZIBPGeoffroy".
+#' Returns a object with class "ZIBP_HOL".
 #'
 #' @references
 #' Kouakou, K. J. G., Hili, O., & Dupuy, J. F. (2021). Estimation in the zero-inflated bivariate Poisson model with an application to health-care utilization data. Afrika Statistika, 16(2), 2767-2788.
 #'
-#' @example examples/examples_ZIBP_Geoffroy.R
+#' @example examples/examples_ZIBP_HOL.R
 #'
 #' @export
-ZIBP_Geoffroy <- function(l1.fo, l2.fo, psi.fo, data,
-                          initial.values=NULL,
-                          optimizer="nlminb") {
+ZIBP_HOL <- function(l1.fo, l2.fo, psi.fo, data,
+                     initial.values=NULL,
+                     optimizer="nlminb") {
   stopifnot (class(l1.fo) == "formula")
   stopifnot (class(l2.fo) == "formula")
   stopifnot (class(psi.fo) == "formula")
-  matri <- model.matrix.ZIBP_Geoffroy(l1.fo, l2.fo, psi.fo, data)
-  res <- fit.ZIBP_Geoffroy(matri, initial.values, optimizer)
-  class(res) <- "ZIBPGeoffroy"
+  matri <- model.matrix.ZIBP_HOL(l1.fo, l2.fo, psi.fo, data)
+  res <- fit.ZIBP_HOL(matri, initial.values, optimizer)
+  class(res) <- "ZIBP_HOL"
   res
 }
 #' @importFrom stats model.matrix model.frame
-model.matrix.ZIBP_Geoffroy <- function(l1.fo, l2.fo, psi.fo, data=NULL) {
+model.matrix.ZIBP_HOL <- function(l1.fo, l2.fo, psi.fo, data=NULL) {
   stopifnot (class(l1.fo) == "formula")
   stopifnot (class(l2.fo) == "formula")
   stopifnot (class(psi.fo) == "formula")
@@ -47,7 +47,7 @@ model.matrix.ZIBP_Geoffroy <- function(l1.fo, l2.fo, psi.fo, data=NULL) {
 }
 #' @importFrom stats optim nlminb
 #' @importFrom numDeriv hessian
-fit.ZIBP_Geoffroy <- function(matri, initial.values, optimizer) {
+fit.ZIBP_HOL <- function(matri, initial.values, optimizer) {
   np_l1  <- ncol(matri$X1)  # Number of parameters in l1
   np_l2  <- ncol(matri$X2)  # Number of parameters in l2
   np_psi <- ncol(matri$W)   # Number of parameters in psi
@@ -61,7 +61,7 @@ fit.ZIBP_Geoffroy <- function(matri, initial.values, optimizer) {
   names_W  <- colnames(matri$W)
 
   # Initial value for l0
-  theta <- moments_estim_ZIBP_Geoffroy(cbind(y1, y2))
+  theta <- moments_estim_ZIBP_HOL(cbind(y1, y2))
   min_l0 <- 0.001
   max_l0 <- Inf
 
@@ -78,7 +78,7 @@ fit.ZIBP_Geoffroy <- function(matri, initial.values, optimizer) {
 
   if (optimizer=="nlminb") {
     fit <- nlminb(start=initial.values,
-                  objective=ll_ZIBP_Geoffroy,
+                  objective=ll_ZIBP_HOL,
                   lower=lower_values,
                   upper=upper_values,
                   y1=y1, y2=y2,
@@ -90,7 +90,7 @@ fit.ZIBP_Geoffroy <- function(matri, initial.values, optimizer) {
   else {
     fit <- optim(par=initial.values,
                  method="Nelder-Mead",
-                 fn=ll_ZIBP_Geoffroy,
+                 fn=ll_ZIBP_HOL,
                  lower=lower_values,
                  upper=upper_values,
                  y1=y1, y2=y2,
@@ -113,7 +113,7 @@ fit.ZIBP_Geoffroy <- function(matri, initial.values, optimizer) {
   fit$fitted.l0  <- fit$par[ncol(X1)+ncol(X2)+ncol(W)+1]
 
   # Obtaining the hessian
-  fit$Hessian <- numDeriv::hessian(func=ll_ZIBP_Geoffroy,
+  fit$Hessian <- numDeriv::hessian(func=ll_ZIBP_HOL,
                                    x=fit$par,
                                    method='Richardson',
                                    y1=y1, y2=y2,
@@ -125,7 +125,7 @@ fit.ZIBP_Geoffroy <- function(matri, initial.values, optimizer) {
   fit <- c(fit, inputs)
 }
 #'
-ll_ZIBP_Geoffroy <- function(theta, y1, y2, X1, X2, W) {
+ll_ZIBP_HOL <- function(theta, y1, y2, X1, X2, W) {
   betas_X1 <- matrix(theta[1:ncol(X1)], ncol=1)
   betas_X2 <- matrix(theta[(ncol(X1)+1) : (ncol(X1)+ncol(X2))], ncol=1)
   betas_W  <- matrix(theta[(ncol(X1)+ncol(X2)+1) : (ncol(X1)+ncol(X2)+ncol(W))], ncol=1)
@@ -137,7 +137,7 @@ ll_ZIBP_Geoffroy <- function(theta, y1, y2, X1, X2, W) {
   logit_inv <- function(x) exp(x) / (1+exp(x))
   psi <- logit_inv(W %*% betas_W)
   y <- as.matrix(cbind(y1, y2))
-  ll <- sum(dZIBP_Geoffroy(x=y, l1=l1, l2=l2, l0=l0, psi=psi, log=TRUE))
+  ll <- sum(dZIBP_HOL(x=y, l1=l1, l2=l2, l0=l0, psi=psi, log=TRUE))
 
   # resul <- c(betas_X1, betas_X2, betas_W, l0)
   # resul <- round(resul, digits=2)
@@ -147,24 +147,24 @@ ll_ZIBP_Geoffroy <- function(theta, y1, y2, X1, X2, W) {
   return(-ll)  # minus to use with optim/nlminb function
 }
 #'
-#' Summary table for marZIP - Geoffroy
+#' Summary table for marZIP - Holgate
 #'
 #' @author Freddy Hernandez-Barajas, \email{fhernanb@unal.edu.co}
 #'
 #' @description
-#' This function obtains the summary table for objects of class marZIBPGeoffroy.
+#' This function obtains the summary table for objects of class marZIBPHOL.
 #'
-#' @param object of class marZIBPGeoffroy.
+#' @param object of class marZIBPHOL.
 #' @param ... aditional arguments.
 #'
 #' @returns
 #' Returns the summary table.
 #'
-#' @example examples/examples_marZIBP_Geoffroy.R
+#' @example examples/examples_marZIBP_HOL.R
 #'
 #' @export
 #' @importFrom stats pnorm printCoefmat
-summary.ZIBPGeoffroy <- function(object, ...) {
+summary.ZIBP_HOL <- function(object, ...) {
   .myenv <- environment()
   var.list <- as.list(object)
   list2env(var.list , envir = .myenv)
@@ -205,7 +205,7 @@ summary.ZIBPGeoffroy <- function(object, ...) {
   printCoefmat(res.l0, P.values=TRUE, has.Pvalue=TRUE)
   cat("---------------------------------------------------------------\n")
 }
-#' @rdname summary.marZIBPGeoffroy
-print.ZIBPGeoffroy <- function(object, ...) {
+#' @rdname summary.marZIBP_HOL
+print.ZIBP_HOL <- function(object, ...) {
   print("Please use the summary method to obtain complete information.")
 }

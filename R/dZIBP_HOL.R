@@ -1,11 +1,11 @@
-#' Zero Inflated Bivariate Poisson Distribution - Geoffroy
+#' Zero Inflated Bivariate Poisson Distribution - Holgate
 #'
 #' @author Freddy Hernandez-Barajas, \email{fhernanb@unal.edu.co}
 #'
 #' @description
 #' This function obtains the probability for the Zero Inflated
 #' Bivariate Poisson distribution
-#' under the parameterization of Geoffroy et. al (2021).
+#' under the parameterization of Kouakou et. al (2021).
 #'
 #' @param x vector or matrix of quantiles. When \code{x} is a matrix,
 #' each row is taken to be a quantile and columns correspond to the number of dimensions \code{p}.
@@ -20,14 +20,21 @@
 #' Returns the density for a given data \code{x}.
 #'
 #' @references
-#' Kouakou, K. J. G., Hili, O., & Dupuy, J. F. (2021). Estimation in the zero-inflated bivariate Poisson model with an application to health-care utilization data. Afrika Statistika, 16(2), 2767-2788.
+#' P. Holgate. Estimation for the bivariate poisson distribution.
+#' Biometrika, 51(1/2):241–245, 1964. ISSN 00063444, 14643510.
+#' URL http://www.jstor.org/stable/2334210.
 #'
-#' @example examples/examples_dZIBP_Geoffroy.R
+#' Konan Jean Geoffroy Kouakou, Ouagnina Hili, and Jean-Francois
+#' Dupuy. Estimation in the zero-inflated bivariate poisson model
+#' with an application to health-care utilization data.
+#' Afrika Statistika, 16(2):2767–2788, 2021.
+#'
+#' @example examples/examples_dZIBP_HOL.R
 #'
 #' @export
 #' @useDynLib MultivDists
 #' @importFrom Rcpp sourceCpp
-dZIBP_Geoffroy <- function(x, l1, l2, l0, psi, log=FALSE) {
+dZIBP_HOL <- function(x, l1, l2, l0, psi, log=FALSE) {
   # Initial checks
   if(any(l1 <= 0)) stop("lambda_1 must be positive.")
   if(any(l2 <= 0)) stop("lambda_2 must be positive.")
@@ -72,12 +79,12 @@ dZIBP_Geoffroy <- function(x, l1, l2, l0, psi, log=FALSE) {
     res
 }
 #'
-#' @rdname dZIBP_Geoffroy
+#' @rdname dZIBP_HOL
 #' @importFrom stats runif
 #' @export
 #' @useDynLib MultivDists
 #' @importFrom Rcpp sourceCpp
-rZIBP_Geoffroy <- function(n, l1, l2, l0, psi) {
+rZIBP_HOL <- function(n, l1, l2, l0, psi) {
   if(any(l1 <= 0)) stop("lambda_1 must be positive.")
   if(any(l2 <= 0)) stop("lambda_2 must be positive.")
   if(any(l0 <= 0)) stop("lambda_0 must be positive.")
@@ -97,14 +104,15 @@ rZIBP_Geoffroy <- function(n, l1, l2, l0, psi) {
 #'
 #'
 #'
-#' Moment estimations for Zero Inflated Bivariate Poisson Distribution - Geoffroy
+#' Moment estimations for Zero Inflated Bivariate Poisson
+#' Distribution - Holgate
 #'
 #' @author Freddy Hernandez-Barajas, \email{fhernanb@unal.edu.co}
 #'
 #' @description
 #' This function obtains moment estimators for the Zero Inflated
 #' Bivariate Poisson distribution
-#' under the parameterization of Geoffroyminarayana et. al (1993).
+#' under the parameterization of Holgate (1964).
 #'
 #' @param x vector or matrix of quantiles. When \code{x} is a matrix,
 #' each row is taken to be a quantile and columns correspond to the number of dimensions \code{p}.
@@ -113,14 +121,16 @@ rZIBP_Geoffroy <- function(n, l1, l2, l0, psi) {
 #' Returns a vector with \eqn{\hat{\lambda_1}}, \eqn{\hat{\lambda_2}}, \eqn{\hat{\alpha}} and \eqn{\hat{\psi}}.
 #'
 #' @references
-#' Kouakou, K. J. G., Hili, O., & Dupuy, J. F. (2021). Estimation in the zero-inflated bivariate Poisson model with an application to health-care utilization data. Afrika Statistika, 16(2), 2767-2788.
+#' P. Holgate. Estimation for the bivariate poisson distribution.
+#' Biometrika, 51(1/2):241–245, 1964. ISSN 00063444, 14643510.
+#' URL http://www.jstor.org/stable/2334210.
 #'
-#' @example examples/examples_dZIBP_Geoffroy.R
+#' @example examples/examples_dZIBP_HOL.R
 #'
 #' @importFrom stats cor var
 #' @importFrom nleqslv nleqslv
 #' @export
-moments_estim_ZIBP_Geoffroy <- function(x) {
+moments_estim_ZIBP_HOL <- function(x) {
 
   # This is an auxiliar function to create a equation system
   # with the samples statistics

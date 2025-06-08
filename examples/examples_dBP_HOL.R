@@ -1,16 +1,16 @@
 
 # Example 1 ---------------------------------------------------------------
 # Probability for single values of X1 and X2
-dZIBP_Geoffroy(c(0, 0), l1=3, l2=4, l0=1, psi=0.15)
-dZIBP_Geoffroy(c(1, 0), l1=3, l2=4, l0=1, psi=0.15)
-dZIBP_Geoffroy(c(0, 1), l1=3, l2=4, l0=1, psi=0.15)
+dBP_HOL(c(0, 0), l1=3, l2=4, l0=1)
+dBP_HOL(c(1, 0), l1=3, l2=4, l0=1)
+dBP_HOL(c(0, 1), l1=3, l2=4, l0=1)
 
 # Probability for a matrix the values of X1 and X2
 x <- matrix(c(0, 0,
               1, 0,
               0, 1), ncol=2, byrow=TRUE)
 x
-dZIBP_Geoffroy(x=x, l1=3, l2=4, l0=1, psi=0.15)
+dBP_HOL(x=x, l1=3, l2=4, l0=1)
 
 # Checking if the probabilities sum 1
 val_x1 <- val_x2 <- 0:50
@@ -19,75 +19,68 @@ space <- as.matrix(space)
 
 l1 <- 3
 l2 <- 4
-l0 <- 1.27
-psi <- 0.15
+l0 <- 5
 
-probs <- dZIBP_Geoffroy(x=space, l1=l1, l2=l2, l0=l0, psi=psi)
+probs <- dBP_HOL(x=space, l1=l1, l2=l2, l0=l0)
 sum(probs)
 
 # Example 2 ---------------------------------------------------------------
-# Heat map for a ZIBP_Geoffroy
+# Heat map for a BP_HOL
 
-l1 <- 3
-l2 <- 4
-l0 <- 1.2
-psi <- 0.03
+l1 <- 1
+l2 <- 2
+l0 <- 4
 
 X1 <- 0:10
 X2 <- 0:10
 data <- expand.grid(X1=X1, X2=X2)
-data$Prob <- dZIBP_Geoffroy(x=data, l1=l1, l2=l2, l0=l0, psi=psi)
+data$Prob <- dBP_HOL(x=data, l1=l1, l2=l2, l0=l0)
 data$X1 <- factor(data$X1)
 data$X2 <- factor(data$X2)
 
 library(ggplot2)
 ggplot(data, aes(X1, X2, fill=Prob)) +
   geom_tile() +
-  scale_fill_gradient(low="darkgreen", high="yellow")
-
+  scale_fill_gradient(low="darkgreen", high="pink")
 
 # Example 3 ---------------------------------------------------------------
 # Generating random values and moment estimations
 
-l1 <- 13
-l2 <- 8
-l0 <- 5
-psi <- 0.15
+l1 <- 1
+l2 <- 2
+l0 <- 4
 
-x <- rZIBP_Geoffroy(n=500, l1, l2, l0, psi)
-moments_estim_ZIBP_Geoffroy(x)
+x <- rBP_HOL(n=500, l1, l2, l0)
+moments_estim_BP_HOL(x)
 
 # Example 4 ---------------------------------------------------------------
 # Estimating the parameters using the loglik function
 
 # Loglik function
-llZIBP_Geoffroy <- function(param, x) {
+llBP_HOL <- function(param, x) {
   l1 <- param[1]  # param: is the parameter vector
   l2 <- param[2]
   l0 <- param[3]
-  psi <- param[4]
-  sum(dZIBP_Geoffroy(x=x, l1=l1, l2=l2,
-                     l0=l0, psi=psi, log=TRUE))
+  sum(dBP_HOL(x=x, l1=l1, l2=l2, l0=l0, log=TRUE))
 }
 
 # The known parameters
-l1 <- 5
-l2 <- 3
-psi <- 0.20
-l0 <- 1.20
+l1 <- 1
+l2 <- 2
+l0 <- 4
 
 set.seed(12345)
-x <- rZIBP_Geoffroy(n=500, l1=l1, l2=l2, l0=l0, psi=psi)
+x <- rBP_HOL(n=500, l1=l1, l2=l2, l0=l0)
 
 # To obtain reasonable values for l0
-start_param <- moments_estim_ZIBP_Geoffroy(x)
+start_param <- moments_estim_BP_HOL(x)
 start_param
 
 # Estimating parameters
-res1 <- optim(fn = llZIBP_Geoffroy,
+res1 <- optim(fn = llBP_HOL,
               par = start_param,
-              lower = c(0.001, 0.001, 0.001, 0.0001),
-              upper = c(  Inf,   Inf,   Inf, 0.9999),
+              lower = c(0.001, 0.001, 0.001),
+              upper = c(  Inf,   Inf,   Inf),
               method = "L-BFGS-B",
               control = list(maxit=100000, fnscale=-1),
               x=x)
