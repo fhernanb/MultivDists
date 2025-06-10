@@ -27,7 +27,7 @@ marZIBP_HOL(
 \item{optimizer}{the optimizer to be used: nlminb, optim.}
 }
 \value{
-Returns a object with class "marZIB_PHOL".
+Returns a object with class "marZIBP_HOL".
 }
 \description{
 This function fit a marginal Zero Inflated Bivariate Poisson

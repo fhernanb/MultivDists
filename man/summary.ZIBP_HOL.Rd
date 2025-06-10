@@ -2,20 +2,20 @@
 % Please edit documentation in R/ZIBP_HOL.R
 \name{summary.ZIBP_HOL}
 \alias{summary.ZIBP_HOL}
-\title{Summary table for marZIP - Holgate}
+\title{Summary table for ZIBP - Holgate}
 \usage{
 \method{summary}{ZIBP_HOL}(object, ...)
 }
 \arguments{
-\item{object}{of class marZIBPHOL.}
+\item{object}{of class ZIBP_HOL.}
 
-\item{...}{aditional arguments.}
+\item{...}{additional arguments.}
 }
 \value{
 Returns the summary table.
 }
 \description{
-This function obtains the summary table for objects of class marZIBPHOL.
+This function obtains the summary table for objects of class ZIBP_HOL.
 }
 \examples{
 # Example 1 ---------------------------------------------------------------

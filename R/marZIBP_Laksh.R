@@ -26,13 +26,13 @@ marZIBP_Laksh <- function(mu1.fo, mu2.fo, psi.fo, data,
   stopifnot (class(mu1.fo) == "formula")
   stopifnot (class(mu2.fo) == "formula")
   stopifnot (class(psi.fo) == "formula")
-  matri <- model.matrix.marZIBP_Laksh(mu1.fo, mu2.fo, psi.fo, data)
+  matri <- model_matrix_marZIBP_Laksh(mu1.fo, mu2.fo, psi.fo, data)
   res <- fit.marZIBP_Laksh(matri, initial.values)
   class(res) <- "marZIBPLaksh"
   res
 }
 #' @importFrom stats model.matrix model.frame
-model.matrix.marZIBP_Laksh <- function(mu1.fo, mu2.fo, psi.fo, data=NULL) {
+model_matrix_marZIBP_Laksh <- function(mu1.fo, mu2.fo, psi.fo, data=NULL) {
   stopifnot (class(mu1.fo) == "formula")
   stopifnot (class(mu2.fo) == "formula")
   stopifnot (class(psi.fo) == "formula")
@@ -186,8 +186,4 @@ summary.marZIBPLaksh <- function(object, ...) {
   cat("---------------------------------------------------------------\n")
   printCoefmat(res.alpha, P.values=TRUE, has.Pvalue=TRUE)
   cat("---------------------------------------------------------------\n")
-}
-#' @rdname summary.marZIBPLaksh
-print.marZIBPLaksh <- function(object, ...) {
-  print("Please use the summary method to obtain complete information.")
 }

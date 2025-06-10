@@ -14,7 +14,7 @@
 #' @param optimizer the optimizer to be used: nlminb, optim.
 #'
 #' @returns
-#' Returns a object with class "marZIB_PHOL".
+#' Returns a object with class "marZIBP_HOL".
 #'
 #' @references
 #' P. Holgate. Estimation for the bivariate poisson distribution.
@@ -35,13 +35,13 @@ marZIBP_HOL <- function(mu1.fo, mu2.fo, psi.fo, data,
   stopifnot (class(mu1.fo) == "formula")
   stopifnot (class(mu2.fo) == "formula")
   stopifnot (class(psi.fo) == "formula")
-  matri <- model.matrix.marZIBP_HOL(mu1.fo, mu2.fo, psi.fo, data)
+  matri <- model_matrix_marZIBP_HOL(mu1.fo, mu2.fo, psi.fo, data)
   res <- fit.marZIBP_HOL(matri, initial.values, optimizer)
-  class(res) <- "marZIB_PHOL"
+  class(res) <- "marZIBP_HOL"
   res
 }
 #' @importFrom stats model.matrix model.frame
-model.matrix.marZIBP_HOL <- function(mu1.fo, mu2.fo, psi.fo, data=NULL) {
+model_matrix_marZIBP_HOL <- function(mu1.fo, mu2.fo, psi.fo, data=NULL) {
   stopifnot (class(mu1.fo) == "formula")
   stopifnot (class(mu2.fo) == "formula")
   stopifnot (class(psi.fo) == "formula")
@@ -167,7 +167,7 @@ ll_marZIBP_HOL <- function(theta, y1, y2, X1, X2, W) {
 #' This function obtains the summary table for objects of class marZIBP_HOL.
 #'
 #' @param object of class marZIBP_HOL.
-#' @param ... aditional arguments.
+#' @param ... additional arguments.
 #'
 #' @returns
 #' Returns the summary table.
@@ -217,7 +217,4 @@ summary.marZIBP_HOL <- function(object, ...) {
   printCoefmat(res.l0, P.values=TRUE, has.Pvalue=TRUE)
   cat("---------------------------------------------------------------\n")
 }
-#' @rdname summary.marZIBP_HOL
-print.marZIBP_HOL <- function(object, ...) {
-  print("Please use the summary method to obtain complete information.")
-}
+

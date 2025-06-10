@@ -92,7 +92,7 @@ distribution under the Holagate (1964) version.</p>
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>Returns a object with class "marZIB_PHOL".</p>
+    <p>Returns a object with class "marZIBP_HOL".</p>
     </div>
     <div id="references">
     <h2>References</h2>
@@ -130,28 +130,35 @@ Afrika Statistika, 16(2):2767–2788, 2021.</p>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># To obtain the usual summary table</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">mod1</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>             Length Class  Mode     </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> par           4    -none- numeric  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> objective     1    -none- numeric  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> convergence   1    -none- numeric  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> iterations    1    -none- numeric  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> evaluations   2    -none- numeric  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> message       1    -none- character</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> fitted.mu1  500    -none- numeric  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> fitted.mu2  500    -none- numeric  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> fitted.psi  500    -none- numeric  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> fitted.l0     1    -none- numeric  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> fitted.l1   500    -none- numeric  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> fitted.l2   500    -none- numeric  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Hessian      16    -none- numeric  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> y1          500    -none- numeric  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> y2          500    -none- numeric  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> X1          500    -none- numeric  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> X2          500    -none- numeric  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> W           500    -none- numeric  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> np_mu1        1    -none- numeric  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> np_mu2        1    -none- numeric  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> np_psi        1    -none- numeric  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ---------------------------------------------------------------</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Fixed effects for log(mu1) </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ---------------------------------------------------------------</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>             Estimate Std. Error z value  Pr(&gt;|z|)    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> (Intercept) 1.326544   0.031135  42.606 &lt; 2.2e-16 ***</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ---</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ---------------------------------------------------------------</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Fixed effects for log(mu2) </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ---------------------------------------------------------------</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>             Estimate Std. Error z value  Pr(&gt;|z|)    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> (Intercept) 1.502743   0.029727  50.552 &lt; 2.2e-16 ***</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ---</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ---------------------------------------------------------------</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Fixed effects for logit(psi) </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ---------------------------------------------------------------</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>             Estimate Std. Error z value  Pr(&gt;|z|)    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> (Intercept) -1.51725    0.11649 -13.025 &lt; 2.2e-16 ***</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ---</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ---------------------------------------------------------------</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Estimation for l0 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ---------------------------------------------------------------</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>             Estimate Std. Error z value  Pr(&gt;|z|)    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> (Intercept)  1.35003    0.23462  5.7542 8.706e-09 ***</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ---</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ---------------------------------------------------------------</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># To explore the estimations of l1, l2, mu and p</span></span></span>
 <span class="r-in"><span></span></span>
@@ -245,28 +252,38 @@ Afrika Statistika, 16(2):2767–2788, 2021.</p>
 <span class="r-in"><span>                    data<span class="op">=</span><span class="va">data2</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">mod2</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>             Length Class  Mode     </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> par           7    -none- numeric  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> objective     1    -none- numeric  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> convergence   1    -none- numeric  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> iterations    1    -none- numeric  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> evaluations   2    -none- numeric  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> message       1    -none- character</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> fitted.mu1  300    -none- numeric  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> fitted.mu2  300    -none- numeric  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> fitted.psi  300    -none- numeric  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> fitted.l0     1    -none- numeric  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> fitted.l1   300    -none- numeric  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> fitted.l2   300    -none- numeric  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Hessian      49    -none- numeric  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> y1          300    -none- numeric  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> y2          300    -none- numeric  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> X1          600    -none- numeric  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> X2          600    -none- numeric  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> W           600    -none- numeric  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> np_mu1        1    -none- numeric  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> np_mu2        1    -none- numeric  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> np_psi        1    -none- numeric  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ---------------------------------------------------------------</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Fixed effects for log(mu1) </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ---------------------------------------------------------------</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>             Estimate Std. Error z value  Pr(&gt;|z|)    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> (Intercept) 0.994025   0.065509  15.174 &lt; 2.2e-16 ***</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> x1          1.261572   0.089517  14.093 &lt; 2.2e-16 ***</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ---</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ---------------------------------------------------------------</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Fixed effects for log(mu2) </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ---------------------------------------------------------------</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>             Estimate Std. Error z value  Pr(&gt;|z|)    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> (Intercept) 1.025758   0.060641  16.915 &lt; 2.2e-16 ***</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> x2          2.070244   0.097812  21.166 &lt; 2.2e-16 ***</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ---</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ---------------------------------------------------------------</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Fixed effects for logit(psi) </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ---------------------------------------------------------------</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>             Estimate Std. Error z value  Pr(&gt;|z|)    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> (Intercept) -2.68273    0.27843 -9.6353 &lt; 2.2e-16 ***</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> x2           2.44568    0.32549  7.5139 5.739e-14 ***</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ---</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ---------------------------------------------------------------</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Estimation for l0 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ---------------------------------------------------------------</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>             Estimate Std. Error z value Pr(&gt;|z|)   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> (Intercept)  1.09401    0.39189  2.7916 0.005245 **</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ---</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ---------------------------------------------------------------</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
 </code></pre></div>

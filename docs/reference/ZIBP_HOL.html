@@ -118,12 +118,12 @@ under Holgate (1964) and Geoffroy et. al (2021).</p>
 <span class="r-in"><span><span class="va">data1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html" class="external-link">as.data.frame</a></span><span class="op">(</span><span class="va">data1</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html" class="external-link">colnames</a></span><span class="op">(</span><span class="va">data1</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"y1"</span>, <span class="st">"y2"</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="va">mod</span> <span class="op">&lt;-</span> <span class="fu">ZIBP_HOL</span><span class="op">(</span>l1.fo<span class="op">=</span><span class="va">y1</span><span class="op">~</span><span class="fl">1</span>,</span></span>
-<span class="r-in"><span>                l2.fo<span class="op">=</span><span class="va">y2</span><span class="op">~</span><span class="fl">1</span>,</span></span>
-<span class="r-in"><span>                psi.fo<span class="op">=</span><span class="op">~</span><span class="fl">1</span>,</span></span>
-<span class="r-in"><span>                data<span class="op">=</span><span class="va">data1</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">mod1</span> <span class="op">&lt;-</span> <span class="fu">ZIBP_HOL</span><span class="op">(</span>l1.fo<span class="op">=</span><span class="va">y1</span><span class="op">~</span><span class="fl">1</span>,</span></span>
+<span class="r-in"><span>                 l2.fo<span class="op">=</span><span class="va">y2</span><span class="op">~</span><span class="fl">1</span>,</span></span>
+<span class="r-in"><span>                 psi.fo<span class="op">=</span><span class="op">~</span><span class="fl">1</span>,</span></span>
+<span class="r-in"><span>                 data<span class="op">=</span><span class="va">data1</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">mod</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">mod1</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ---------------------------------------------------------------</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Fixed effects for log(l1) </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ---------------------------------------------------------------</span>
@@ -154,7 +154,8 @@ under Holgate (1964) and Geoffroy et. al (2021).</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ---------------------------------------------------------------</span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Log.html" class="external-link">exp</a></span><span class="op">(</span><span class="va">mod</span><span class="op">$</span><span class="va">par</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">]</span><span class="op">)</span>, <span class="va">mod</span><span class="op">$</span><span class="va">par</span><span class="op">[</span><span class="fl">4</span><span class="op">]</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="co"># To obtain the estimated parameters</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Log.html" class="external-link">exp</a></span><span class="op">(</span><span class="va">mod1</span><span class="op">$</span><span class="va">par</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">]</span><span class="op">)</span>, <span class="va">mod1</span><span class="op">$</span><span class="va">par</span><span class="op">[</span><span class="fl">4</span><span class="op">]</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    l1_hat    l2_hat    l0_hat   psi_hat </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 4.7251993 2.8382636 0.2818859 1.3919595 </span>
 <span class="r-in"><span></span></span>
@@ -179,15 +180,15 @@ under Holgate (1964) and Geoffroy et. al (2021).</p>
 <span class="r-in"><span>  <span class="fu"><a href="https://rdrr.io/r/base/mean.html" class="external-link">mean</a></span><span class="op">(</span><span class="va">y1</span><span class="op">==</span><span class="fl">0</span> <span class="op">&amp;</span> <span class="va">y2</span><span class="op">==</span><span class="fl">0</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span>  <span class="co"># Model as in section 5.1 from Geoffroy et. al (2021).</span></span></span>
-<span class="r-in"><span>  <span class="va">mod3</span> <span class="op">&lt;-</span> <span class="cn">NULL</span></span></span>
-<span class="r-in"><span>  <span class="va">mod3</span> <span class="op">&lt;-</span> <span class="fu">ZIBP_HOL</span><span class="op">(</span>l1.fo<span class="op">=</span><span class="va">nvisits</span> <span class="op">~</span><span class="va">health</span><span class="op">+</span><span class="va">chronic</span><span class="op">+</span><span class="va">age</span><span class="op">+</span><span class="va">gender</span><span class="op">+</span></span></span>
+<span class="r-in"><span>  <span class="va">mod2</span> <span class="op">&lt;-</span> <span class="cn">NULL</span></span></span>
+<span class="r-in"><span>  <span class="va">mod2</span> <span class="op">&lt;-</span> <span class="fu">ZIBP_HOL</span><span class="op">(</span>l1.fo<span class="op">=</span><span class="va">nvisits</span> <span class="op">~</span><span class="va">health</span><span class="op">+</span><span class="va">chronic</span><span class="op">+</span><span class="va">age</span><span class="op">+</span><span class="va">gender</span><span class="op">+</span></span></span>
 <span class="r-in"><span>                     <span class="va">married</span><span class="op">+</span><span class="va">school</span><span class="op">+</span><span class="va">income</span><span class="op">+</span><span class="va">medicaid</span>,</span></span>
 <span class="r-in"><span>                   l2.fo<span class="op">=</span><span class="va">novisits</span><span class="op">~</span><span class="va">health</span><span class="op">+</span><span class="va">chronic</span><span class="op">+</span><span class="va">age</span><span class="op">+</span><span class="va">gender</span><span class="op">+</span></span></span>
 <span class="r-in"><span>                     <span class="va">married</span><span class="op">+</span><span class="va">school</span><span class="op">+</span><span class="va">income</span><span class="op">+</span><span class="va">medicaid</span>,</span></span>
 <span class="r-in"><span>                   psi.fo<span class="op">=</span><span class="op">~</span><span class="va">chronic</span><span class="op">+</span><span class="va">gender</span><span class="op">+</span><span class="va">school</span><span class="op">+</span><span class="va">medicaid</span>,</span></span>
 <span class="r-in"><span>                   data<span class="op">=</span><span class="va">NMES1988</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span>  <span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">mod3</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">mod2</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">}</span> <span class="co"># }</span></span></span>
 </code></pre></div>
     </div>

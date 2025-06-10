@@ -11,14 +11,15 @@ data1 <- rZIBP_HOL(n=500, l1=l1, l2=l2, l0=l0, psi=psi)
 data1 <- as.data.frame(data1)
 colnames(data1) <- c("y1", "y2")
 
-mod <- ZIBP_HOL(l1.fo=y1~1,
-                l2.fo=y2~1,
-                psi.fo=~1,
-                data=data1)
+mod1 <- ZIBP_HOL(l1.fo=y1~1,
+                 l2.fo=y2~1,
+                 psi.fo=~1,
+                 data=data1)
 
-summary(mod)
+summary(mod1)
 
-c(exp(mod$par[1:3]), mod$par[4])
+# To obtain the estimated parameters
+c(exp(mod1$par[1:3]), mod1$par[4])
 
 moments_estim_ZIBP_HOL(data1)
 
@@ -39,13 +40,13 @@ moments_estim_ZIBP_HOL(data1)
   mean(y1==0 & y2==0)
 
   # Model as in section 5.1 from Geoffroy et. al (2021).
-  mod3 <- NULL
-  mod3 <- ZIBP_HOL(l1.fo=nvisits ~health+chronic+age+gender+
+  mod2 <- NULL
+  mod2 <- ZIBP_HOL(l1.fo=nvisits ~health+chronic+age+gender+
                      married+school+income+medicaid,
                    l2.fo=novisits~health+chronic+age+gender+
                      married+school+income+medicaid,
                    psi.fo=~chronic+gender+school+medicaid,
                    data=NMES1988)
 
-  summary(mod3)
+  summary(mod2)
 }

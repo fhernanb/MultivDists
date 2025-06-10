@@ -28,13 +28,13 @@ ZIBP_HOL <- function(l1.fo, l2.fo, psi.fo, data,
   stopifnot (class(l1.fo) == "formula")
   stopifnot (class(l2.fo) == "formula")
   stopifnot (class(psi.fo) == "formula")
-  matri <- model.matrix.ZIBP_HOL(l1.fo, l2.fo, psi.fo, data)
+  matri <- model_matrix_ZIBP_HOL(l1.fo, l2.fo, psi.fo, data)
   res <- fit.ZIBP_HOL(matri, initial.values, optimizer)
   class(res) <- "ZIBP_HOL"
   res
 }
 #' @importFrom stats model.matrix model.frame
-model.matrix.ZIBP_HOL <- function(l1.fo, l2.fo, psi.fo, data=NULL) {
+model_matrix_ZIBP_HOL <- function(l1.fo, l2.fo, psi.fo, data=NULL) {
   stopifnot (class(l1.fo) == "formula")
   stopifnot (class(l2.fo) == "formula")
   stopifnot (class(psi.fo) == "formula")
@@ -147,15 +147,15 @@ ll_ZIBP_HOL <- function(theta, y1, y2, X1, X2, W) {
   return(-ll)  # minus to use with optim/nlminb function
 }
 #'
-#' Summary table for marZIP - Holgate
+#' Summary table for ZIBP - Holgate
 #'
 #' @author Freddy Hernandez-Barajas, \email{fhernanb@unal.edu.co}
 #'
 #' @description
-#' This function obtains the summary table for objects of class marZIBPHOL.
+#' This function obtains the summary table for objects of class ZIBP_HOL.
 #'
-#' @param object of class marZIBPHOL.
-#' @param ... aditional arguments.
+#' @param object of class ZIBP_HOL.
+#' @param ... additional arguments.
 #'
 #' @returns
 #' Returns the summary table.
@@ -205,7 +205,4 @@ summary.ZIBP_HOL <- function(object, ...) {
   printCoefmat(res.l0, P.values=TRUE, has.Pvalue=TRUE)
   cat("---------------------------------------------------------------\n")
 }
-#' @rdname summary.marZIBP_HOL
-print.ZIBP_HOL <- function(object, ...) {
-  print("Please use the summary method to obtain complete information.")
-}
+
